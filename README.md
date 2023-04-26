@@ -4,7 +4,7 @@
 
 Honkai: Star Rail Automation Package (auto-resource grinder).
 
-### Installation / Setup
+## Installation / Setup
 The install the `starrail` package, run:
 ```shell
 pip install starrail
