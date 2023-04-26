@@ -5,7 +5,7 @@
 <ul>
   
 ```
-Honkai: Star Rail Automation Package [Python Based]
+Honkai: Star Rail Automation Package
 - Auto Resources Grind
 - Auto Daily Login and Award Collection
 
