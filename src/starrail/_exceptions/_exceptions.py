@@ -32,7 +32,7 @@ class StarRailModuleException(Exception):
         self.message = f"\nAn unexpected exception has occurred ({err_code}). Please seek help at https://github.com/ReZeroE/StarRail/issues."
         super().__init__(self.message)
         
-class StarRailOSNoteSupported(Exception):
+class StarRailOSNotSupported(Exception):
     __module__ = 'builtins'
     def __init__(self):
         super().__init__(f"\nThe starrail package only supports Windows installations of Honkai Star Rail.")

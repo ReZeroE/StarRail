@@ -38,4 +38,4 @@ from ._exceptions._exceptions import *
 from .honkai_star_rail import HonkaiStarRail
 
 if check_platform() == False:
-    raise StarRailOSNoteSupported()
+    raise StarRailOSNotSupported()
