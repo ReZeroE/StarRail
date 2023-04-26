@@ -20,27 +20,3 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-import os
-import sys
-
-class HonkaiStarRail:
-    """
-    Honkai: Star Rail game instance.
-    """
-    def __init__(self):
-        self.pid            = None
-        self.instance_name  = None
-        self.is_focused     = False
-    
-    def run(self) -> bool:
-        pass
-    
-    def terminate(self) -> bool:
-        pass
-    
-    def restart(self) -> bool:
-        return self.terminate() and self.run()
-    
-    def verify_process(self) -> bool:
-        pass

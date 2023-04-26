@@ -1,3 +1,9 @@
+"""
+StarRail
+=====
+Provides Honkai Star Rail Gameplay Automation
+"""
+
 # SPDX-License-Identifier: MIT
 # MIT License
 #
@@ -21,11 +27,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-__author__ = "Kevin L."
+__author__  = "Kevin L."
 __version__ = "0.0.1"
-__support__ = "Honkai: Star Rail"
+__support__ = "Honkai Star Rail"
+__all__     = ["starrail"]
 
+
+from ._utils._utils import *
+from ._exceptions._exceptions import *
 from .honkai_star_rail import HonkaiStarRail
 
-def start_game():
-    pass
+if check_platform() == False:
+    raise StarRailOSNoteSupported()

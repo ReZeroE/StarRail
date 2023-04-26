@@ -21,26 +21,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
 import sys
+import argparse
+from ..honkai_star_rail import HonkaiStarRail
 
-class HonkaiStarRail:
-    """
-    Honkai: Star Rail game instance.
-    """
-    def __init__(self):
-        self.pid            = None
-        self.instance_name  = None
-        self.is_focused     = False
-    
-    def run(self) -> bool:
+class StarRailCommandLineEndPoints:
+    def __inti__(self):
         pass
     
-    def terminate(self) -> bool:
+    def start_game(self) -> bool:
         pass
     
-    def restart(self) -> bool:
-        return self.terminate() and self.run()
-    
-    def verify_process(self) -> bool:
+    def terminate_game(self) -> bool:
         pass
+    
+    def restart_game(self) -> bool:
+        return self.start_game() and self.terminate_game()
+
+        
+def execute_command():
+    ep_handler = StarRailCommandLineEndPoints()
+    print(type(ep_handler))
+
+if __name__ == "__main__":
+    pass
+        
+    

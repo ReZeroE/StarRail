@@ -20,9 +20,3 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-class StarRailModuleException(Exception):
-    __module__ = 'builtins'
-    def __init__(self, err_code):
-        self.message = f"\nAn unexpected exception has occurred ({err_code}). Please seek help at https://github.com/ReZeroE/StarRail/issues."
-        super().__init__(self.message)

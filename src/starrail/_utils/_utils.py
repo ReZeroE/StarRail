@@ -22,25 +22,13 @@
 # SOFTWARE.
 
 import os
-import sys
 
-class HonkaiStarRail:
+def check_platform():
     """
-    Honkai: Star Rail game instance.
+    Verifies whether the OS is supported by the package.
+    Package starrail only support Windows installations of Honkai Star Rail.
+    
+    :return: true if running on Windows, false otherwise
+    :rtype: bool
     """
-    def __init__(self):
-        self.pid            = None
-        self.instance_name  = None
-        self.is_focused     = False
-    
-    def run(self) -> bool:
-        pass
-    
-    def terminate(self) -> bool:
-        pass
-    
-    def restart(self) -> bool:
-        return self.terminate() and self.run()
-    
-    def verify_process(self) -> bool:
-        pass
+    return os.name == "nt"
