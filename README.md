@@ -1,4 +1,4 @@
-# Honkai Star Rail (starrail)
+# Honkai Star Rail - `starrail`
 
 **Note: This package is currently under development.**
 
