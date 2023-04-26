@@ -1,6 +1,7 @@
 # Honkai Star Rail (starrail)
 
-**Note:** This package is still currently under development.
+**Note: This package is currently under development.**
+
 Honkai: Star Rail Automation Package (auto-resource grinder).
 
 ### Installation / Setup
