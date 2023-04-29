@@ -1,0 +1,9 @@
+{
+    "game-config": {
+        "pid": null
+    },
+    "module-config": {
+        "game-abspath": "",
+        "disclaimer-read": false
+    }
+}

@@ -1,9 +1,3 @@
-"""
-StarRail
-=====
-Provides Honkai Star Rail Gameplay Automation
-"""
-
 # SPDX-License-Identifier: MIT
 # MIT License
 #
@@ -26,16 +20,3 @@ Provides Honkai Star Rail Gameplay Automation
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-__author__  = "Kevin L."
-__version__ = "0.0.2"
-__support__ = "Honkai Star Rail"
-__all__     = ["starrail"]
-
-
-from ._utils._utils import *
-from ._exceptions._exceptions import *
-from .honkai_star_rail import HonkaiStarRail
-
-if check_platform() == False:
-    raise StarRailOSNotSupported()

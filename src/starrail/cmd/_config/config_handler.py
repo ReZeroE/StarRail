@@ -23,19 +23,68 @@
 
 import os
 import json
-from ..constants import *
-from .._exceptions._exceptions import *
+from ...constants import *
+from ..._exceptions._exceptions import *
 
 class ConfigHandler:
     def __init__(self):
-        self.__starrail_config = os.path.join(os.path.abspath(os.path.dirname(__file__)), "game_config.json")
+        self.__starrail_config = os.path.join(os.path.abspath(os.path.dirname(__file__)), "config.json")
 
     def __read_game_config(self):
         with open(self.__starrail_config, "r") as f:
             config = json.load(f)
         return config
     
-    @classmethod
+    # ======================================================
+    # ============== | Game Instance Config | ==============
+    # ======================================================
+    
+    def get_game_instance_pid(self):
+        """
+        Get the PID for the currently running instance.
+        :return: The PID of the running instance. None if no instance is running.
+        :rtype: int / NoneType
+        """
+        try:
+            return self.__read_game_config()["game-config"]["pid"]
+        except:
+            return None
+    
+    def set_game_instance_pid(self, pid):
+        """
+        Set the PID for the currently running instance.
+        :param pid: The running instance's PID to set.
+        """
+        config = self.__read_game_config()
+        if config != None:
+            config["game-config"]['pid'] = int(pid) if pid != None else None
+            with open(self.__starrail_config, 'w') as wf:
+                json.dump(config, wf, indent=4)
+    
+    # ========================================================
+    # ============== | StarRail Module Config | ==============
+    # ========================================================
+    def get_disclaimer_status(self):
+        """
+        Get the disclaimer status for the module.
+        :rtype: bool / NoneType
+        """
+        try:
+            return self.__read_game_config()["module-config"]["disclaimer-read"]
+        except KeyError:
+            return None
+        
+    def set_disclaimer_status(self, status=True):
+        """
+        Get the disclaimer status for the module.
+        :param status: Whether the disclaimer has been read.
+        """
+        config = self.__read_game_config()
+        if config != None:
+            config["module-config"]['disclaimer-read'] = status
+            with open(self.__starrail_config, 'w') as wf:
+                json.dump(config, wf, indent=4)
+    
     def get_game_path(self):
         """
         Get absolute path for the game Honkai Star Rail.
@@ -43,11 +92,11 @@ class ConfigHandler:
         :rtype: str / NoneType
         """
         try:
-            return self.__read_game_config()["game-abspath"]
-        except:
+            game_path = self.__read_game_config()["module-config"]["game-abspath"]
+            return game_path if game_path != "" else None
+        except KeyError:
             return None
     
-    @classmethod
     def set_game_path(self, new_path, auto=False):
         """
         Set absolute path for the game Honkai Star Rail.
@@ -65,6 +114,6 @@ class ConfigHandler:
         
         config = self.__read_game_config()
         if config != None:
-            config['game-abspath'] = new_path
+            config["module-config"]['game-abspath'] = new_path
             with open(self.__starrail_config, 'w') as wf:
                 json.dump(config, wf, indent=4)

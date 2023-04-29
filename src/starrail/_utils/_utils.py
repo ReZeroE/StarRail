@@ -22,6 +22,8 @@
 # SOFTWARE.
 
 import os
+import sys
+from termcolor import colored
 
 def check_platform():
     """
@@ -32,3 +34,39 @@ def check_platform():
     :rtype: bool
     """
     return os.name == "nt"
+
+def print_disclaimer():
+    DISCLAIMER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_data", "disclaimer.txt")
+    with open(DISCLAIMER_PATH, "r") as rf:
+        lines = rf.readlines()
+    print("".join(lines) + "\n")
+    
+
+rprint_colors = {
+    'warning'   : 'red',
+    'normal'    : 'green',
+    'cyan'      : 'cyan'
+}
+def rprint(text, type=None, end="\n"):
+    if type == None:
+        raise Exception("Type not provided for rprint.")
+    print(colored(text, rprint_colors[type]), end=end)
+
+def rtext(text, type=None):
+    if type == None:
+        raise Exception("Type not provided for rtext.")
+    return colored(text, rprint_colors[type])
+
+
+def starrail_log(text, log_type=None, end="\n"):
+    log_colors = {
+        'normal'    : 'green',
+        'info'      : 'cyan',
+        'warning'   : 'red'
+    }
+    if log_type == None:
+        raise Exception("Type not provided for starrail_log.")
+    
+    prefix = colored("StarRail Log", log_colors["info"])
+    message = colored(text, log_colors[log_type])
+    print(f"[{prefix}] {message}", end=end, file=sys.stdout)

@@ -23,24 +23,83 @@
 
 import os
 import sys
+import time
+import psutil
+import subprocess
+
+from .constants import *
+from ._exceptions._exceptions import *
+
 
 class HonkaiStarRail:
     """
-    Honkai: Star Rail game instance.
+    Honkai Star Rail game instance.
     """
-    def __init__(self):
-        self.pid            = None
-        self.instance_name  = None
+    def __init__(self, game_path, process=None):
+        self.process        = process
         self.is_focused     = False
+        self.game_path      = self.__verify_path(game_path)
     
     def run(self) -> bool:
-        pass
+        subprocess.Popen(self.game_path, shell=True)
+        start_time = time.time()
+        timeout = 30 
+
+        while time.time() - start_time < timeout:
+            try:
+                target_pid = self.__get_pid_by_name(GAME_DEFAULT)
+                if target_pid != None:
+                    psutil_process = psutil.Process(target_pid)
+                    self.process = psutil_process
+            except psutil.NoSuchProcess:
+                pass
+        return False  # Timeout exceeded before process started
+    
     
     def terminate(self) -> bool:
-        pass
+        if self.process.is_running:
+            self.process.terminate()
+            self.process.wait()
+            return True
+        return False
+
     
     def restart(self) -> bool:
         return self.terminate() and self.run()
+
     
-    def verify_process(self) -> bool:
-        pass
+    def is_running(self) -> bool:
+        return self.process.is_running
+    
+    
+    # ==================================================
+    # ============== | Helper Functions | ==============
+    # ==================================================
+    
+    def __verify_path(self, game_path):
+        """
+        Verify the absolute path to the game Honkai Star Rail.
+        :param game_path: new absolute path to be set
+        :return: the verified game path
+        :rtype: str
+        """
+        if game_path == None or not os.path.exists(game_path):
+            raise StarRailGameNotFoundException("M0")
+        elif os.path.basename(game_path) != GAME_DEFAULT:
+            raise StarRailGameNotFoundException("M1")
+        return game_path
+    
+    
+    def __get_pid_by_name(self, name):
+        
+        for process in psutil.process_iter(['pid', 'name']):
+            try:
+                process_info = process.as_dict(attrs=['pid', 'name'])
+            except psutil.NoSuchProcess:
+                pass
+            else:
+                if process_info['name'] == name:
+                    return process_info['pid']
+        return None
+
+    
