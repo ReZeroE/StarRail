@@ -4,6 +4,7 @@ requires = [
     "termcolor",
     "tabulate",
     "pytest",
+    "colorama",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
