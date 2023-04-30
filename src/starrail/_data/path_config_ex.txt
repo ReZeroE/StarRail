@@ -9,3 +9,4 @@ Below, please provide the path to an official Windows installation of Honkai Sta
         D:\Honkai Star Rail\Star Rail\Game\StarRail.exe
 
     ALL OF THE PATHS ABOVE ARE FINE. The module will automatically resolve the rest.
+    Note: This will overwrite the previously set path. 

@@ -30,7 +30,6 @@ import subprocess
 from .constants import *
 from ._exceptions._exceptions import *
 
-
 class HonkaiStarRail:
     """
     Honkai Star Rail game instance.

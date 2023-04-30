@@ -26,6 +26,28 @@ import sys
 import win32api
 from termcolor import colored
 from ..constants import GAME_DEFAULT
+from .._exceptions._exceptions import *
+
+class StarRailGameDetector:
+    def get_local_drives(self):
+        drives = win32api.GetLogicalDriveStrings()
+        drives = drives.split('\000')[:-1]
+        return drives
+    
+    def find_game(self, paths=[], name=GAME_DEFAULT):
+        for p in paths:
+            if not os.path.exists(p):
+                raise StarRailBaseException(f"Path does not exist. [{p}]")
+        
+        if len(paths) == 0:
+            paths = self.get_local_drives()
+        
+        for drive_path in paths:
+            for root, _, files in os.walk(drive_path):
+                if name in files:
+                    return os.path.join(root, name)
+        return None
+
 
 def check_platform():
     """
@@ -77,25 +99,30 @@ r_colors = {
 }
 def rprint(text, type=None, end="\n"):
     if type == None:
-        raise Exception("Type not provided for rprint.")
+        raise StarRailBaseException("Type not provided for rprint.")
     print(colored(text, r_colors[type]), end=end)
 
 def rtext(text, type=None):
     if type == None:
-        raise Exception("Type not provided for rtext.")
+        raise StarRailBaseException("Type not provided for rtext.")
     return colored(text, r_colors[type])
 
 
-def starrail_log(text, log_type=None, end="\n"):
-    log_colors = {
-        'normal'    : 'green',
-        'info'      : 'cyan',
-        'warning'   : 'red'
-    }
-    if log_type == None:
-        raise Exception("Type not provided for starrail_log.")
+log_colors = {
+    'normal'    : 'white',
+    'success'   : 'green',
+    'warning'   : 'yellow',
+    'error'     : 'red'
+}
+def starrail_log_text(text, log_type="normal"):
+    prefix = colored("StarRail-Log", "cyan")
+    rtext = colored(text, log_colors[log_type])
+    return f"[{prefix}] {rtext}"
     
-    prefix = colored("StarRail-Log", log_colors["info"])
-    message = colored(text, log_colors[log_type])
-    print(f"[{prefix}] {message}", end=end, file=sys.stdout)
+def starrail_log(text, log_type="normal", end="\n"):
+    rtext = starrail_log_text(text, log_type)
+    print(rtext, end=end, file=sys.stdout)
     sys.stdout.flush()
+    
+def verify_game_path(abspath):
+    return abspath != None and len(abspath) > 0 and os.path.exists(abspath) and os.path.basename(abspath) == GAME_DEFAULT

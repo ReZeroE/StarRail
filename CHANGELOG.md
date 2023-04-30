@@ -2,7 +2,7 @@
 
 ### Version 0.0.2 - [4/30/2023]
 1. Stablized commandline features for start, stop, configure
-2. Added commandline feature for overwritting previous path configurations:
+2. Added commandline feature for overwriting previous path configurations:
 ```shell
 $ starrail set-path
 ```

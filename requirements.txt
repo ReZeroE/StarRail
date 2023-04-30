@@ -2,3 +2,4 @@ tabulate
 termcolor
 pytest
 colorama
+tk

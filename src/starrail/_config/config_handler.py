@@ -23,14 +23,17 @@
 
 import os
 import json
-from ...constants import *
-from ..._exceptions._exceptions import *
+from ..constants import *
+from .._exceptions._exceptions import *
 
 class ConfigHandler:
     def __init__(self):
         self.__starrail_config = os.path.join(os.path.abspath(os.path.dirname(__file__)), "config.json")
 
     def __read_game_config(self):
+        """
+        Read config file and return's an JSON object.
+        """
         with open(self.__starrail_config, "r") as f:
             config = json.load(f)
         return config
@@ -93,7 +96,7 @@ class ConfigHandler:
         """
         try:
             game_path = self.__read_game_config()["module-config"]["game-abspath"]
-            return game_path if game_path != "" else None
+            return game_path
         except KeyError:
             return None
     
