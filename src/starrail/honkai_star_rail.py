@@ -42,18 +42,19 @@ class HonkaiStarRail:
     
     def run(self) -> bool:
         subprocess.Popen(self.game_path, shell=True)
-        start_time = time.time()
-        timeout = 30 
-
-        while time.time() - start_time < timeout:
-            try:
-                target_pid = self.__get_pid_by_name(GAME_DEFAULT)
-                if target_pid != None:
-                    psutil_process = psutil.Process(target_pid)
-                    self.process = psutil_process
-            except psutil.NoSuchProcess:
-                pass
-        return False  # Timeout exceeded before process started
+        
+        TIMEOUT = 30
+        starting_time = time.time()
+        while time.time() - starting_time < TIMEOUT:
+            for p in psutil.process_iter():
+                if p.name() == GAME_DEFAULT:
+                    try:
+                        self.process = psutil.Process(p.pid)
+                        return True    
+                    except Exception as ex:
+                        print(ex.__traceback__)
+            time.sleep(1)
+        return False
     
     
     def terminate(self) -> bool:

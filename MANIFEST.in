@@ -1,2 +1,2 @@
-include src/starrail/cmd/_config/config.json
-include src/starrail/_data/disclaimer.txt
+include src/starrail/cmd/_config/*.json
+include src/starrail/_data/*.txt

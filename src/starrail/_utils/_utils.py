@@ -23,7 +23,9 @@
 
 import os
 import sys
+import win32api
 from termcolor import colored
+from ..constants import GAME_DEFAULT
 
 def check_platform():
     """
@@ -41,21 +43,47 @@ def print_disclaimer():
         lines = rf.readlines()
     print("".join(lines) + "\n")
     
+def print_path_config_ex():
+    DISCLAIMER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_data", "path_config_ex.txt")
+    with open(DISCLAIMER_PATH, "r") as rf:
+        lines = rf.readlines()
+    print("".join(lines) + "\n")
 
-rprint_colors = {
-    'warning'   : 'red',
+def get_local_drives():
+    drives = win32api.GetLogicalDriveStrings()
+    drives = drives.split('\000')[:-1]
+    return drives
+
+def find_game(name=GAME_DEFAULT, path="ALL_MOUNTED_DRIVES"):
+    
+    if path == "ALL_MOUNTED_DRIVES":
+        for drive_path in get_local_drives():
+            for root, _, files in os.walk(drive_path):
+                if name in files:
+                    return os.path.join(root, name)
+        return None
+    elif os.path.exists(path):
+        for root, _, files in os.walk(path):
+            if name in files:
+                return os.path.join(root, name)
+        return None
+    else:
+        print("Path to find_game does not exist!"); exit()
+
+r_colors = {
+    'warning'   : 'yellow',
     'normal'    : 'green',
-    'cyan'      : 'cyan'
+    'info'      : 'cyan'
 }
 def rprint(text, type=None, end="\n"):
     if type == None:
         raise Exception("Type not provided for rprint.")
-    print(colored(text, rprint_colors[type]), end=end)
+    print(colored(text, r_colors[type]), end=end)
 
 def rtext(text, type=None):
     if type == None:
         raise Exception("Type not provided for rtext.")
-    return colored(text, rprint_colors[type])
+    return colored(text, r_colors[type])
 
 
 def starrail_log(text, log_type=None, end="\n"):
@@ -67,6 +95,7 @@ def starrail_log(text, log_type=None, end="\n"):
     if log_type == None:
         raise Exception("Type not provided for starrail_log.")
     
-    prefix = colored("StarRail Log", log_colors["info"])
+    prefix = colored("StarRail-Log", log_colors["info"])
     message = colored(text, log_colors[log_type])
     print(f"[{prefix}] {message}", end=end, file=sys.stdout)
+    sys.stdout.flush()
