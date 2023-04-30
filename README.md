@@ -27,7 +27,7 @@ Android/iOS emulators are not supported.
 
 ## Updates (4/29/2023)
 
-The ongoing progress of the package's development will continue, albeit with a temporary suspension on incorporating newer updates that enhance the module's ability to interact with the game's content. At present, we are awaiting responses from Honkai: Star Rail's developers regarding the possibility of any infringement on their Fair Use Policies that may arise from using the `starrail` package (and the other features we planned to implement).
+The ongoing progress of the package's development will continue, albeit with a temporary suspension on incorporating newer updates that enhance the module's ability to interact with the game's content. At present, we are awaiting responses from Honkai: Star Rail's developers regarding the possibility of any infringement on their Fair Use Policies from using the `starrail` package (including the features we planned to implement).
 
 To learn more about this, feel free to read [Honkai: Star Rail's Fair Gaming Declaration](https://hsr.hoyoverse.com/en-us/news/111244).
 
@@ -66,8 +66,7 @@ Declaration, and the creator accepts no responsibility for any
 consequences resulting from its misuse, including game account
 penalties, suspension, or bans.
 
-Please note that according to MiHoYo's Honkai: Star Rail Fair Gaming
-Declaration (https://hsr.hoyoverse.com/en-us/news/111244):
+Please note that according to MiHoYo's [Honkai: Star Rail's Fair Gaming Declaration](https://hsr.hoyoverse.com/en-us/news/111244):
 
     "It is strictly forbidden to use external plug-ins, game
     accelerators/boosters, scripts, or any other third-party tools
