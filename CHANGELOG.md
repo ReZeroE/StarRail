@@ -1,8 +1,6 @@
 # Change Log
 
 ### Version 0.0.2 - [4/30/2023]
-Added commandline support for the following operations (**UNSTABLE**):
-
 1. Stablized commandline features for start, stop, configure
 2. Added commandline feature for overwritting previous path configurations:
 ```shell
