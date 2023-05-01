@@ -16,7 +16,8 @@ Android/iOS emulators are not supported.
 ```
 
 | [Overview](https://github.com/ReZeroE/StarRail#installation--setup) |  -  |
-[Installation / Setup](https://github.com/ReZeroE/StarRail#installation--setup) |
+[Installation / Setup](https://github.com/ReZeroE/StarRail#installation--setup) | - |
+[Usage](https://github.com/ReZeroE/StarRail/tree/dev#usage) |
 
 </ul>
 <br clear="left"/>
@@ -90,7 +91,7 @@ starrail stop
 ```
 starrail set-path
 ```
-4. Show configuration status:
+5. Show configuration status:
 ```
 starrail show-config
 ```
