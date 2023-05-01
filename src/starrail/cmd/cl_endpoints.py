@@ -29,9 +29,6 @@ from tabulate import tabulate
 from termcolor import colored
 from colorama import init; init() 
 
-from consolemenu import *
-from consolemenu.items import *
-
 from .._utils._utils import *
 from .._utils.loader.loader import Loader 
 from .._exceptions._exceptions import *
@@ -231,7 +228,7 @@ class StarRailCommandLineEndPoints:
         ct_key = rtext(AUTO_SELECT_KEY, "warning")
         print(f"\nTo {ct} the location of the game, enter {ct_key}. Else, enter the path to the game.")
 
-        game_path = input("Enter the path to Honkai Star Rail:\n>>> ")        
+        game_path = input("Enter the path to Honkai Star Rail:\n>>> ")
         # AUTO DETECTING
         if game_path.strip().lower() == AUTO_SELECT_KEY:
             self.auto_detect_game_path()
@@ -239,13 +236,15 @@ class StarRailCommandLineEndPoints:
         # MANUAL ENTERING
         else:
             reformatted_path = self.__reformat_path(game_path)
-            game_path = self.__safe_find_game(reformatted_path)
-            starrail_log(f"Game found at: {game_path}")
-            config_handler.set_game_path(game_path)
+            logt = starrail_log_text(f"Searching for Honkai: Star Rail at {reformatted_path}...")
+            with Loader(logt, end=None):
+                game_path = self.__safe_find_game([reformatted_path])
+                starrail_log("\n" + f"Game found at: {game_path}")
+                config_handler.set_game_path(game_path)
         
         # If called on endpoint, display PATH SET confirmation
         if is_called_on_endpoint:
-            starrail_log("Game path set successfully.")
+            starrail_log("Game path set successfully.", "success")
     
     def verify_config(self):    
         config_handler = ConfigHandler()
@@ -271,6 +270,9 @@ class StarRailCommandLineEndPoints:
         Find game in the given paths.
         Safe: raises exception if game not found. 
         """
+        if isinstance(input_paths, str):
+            raise StarRailBaseException("__saft_find_game needs to be provided with a list of paths, not str.")
+        
         detector = StarRailGameDetector()
         if len(input_paths) == 0:
             paths_to_search = detector.get_local_drives()
@@ -285,6 +287,7 @@ class StarRailCommandLineEndPoints:
         if game_path != None: 
             return game_path
         else:
+            print("")
             starrail_log(f"Game ({GAME_DEFAULT}) not found in {paths_to_search} , Existing.", "error")
             exit()
     
