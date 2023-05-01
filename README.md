@@ -88,7 +88,7 @@ starrail stop
 ```
 starrail set-path
 ```
-5. Show configuration status:
+5. Show configuration Status:
 ```
 starrail show-config
 ```
