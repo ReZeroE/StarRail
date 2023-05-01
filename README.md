@@ -36,7 +36,6 @@ Features in development:
 - Auto Daily Login and In-Game Award Collection
 - Scheduler System For Schdeduling Tasks (login + grind + etc.)
 
-<br>
 
 ## Installation / Setup
 The install the `starrail` package, run:
@@ -57,8 +56,6 @@ starrail configure
 and then follow the promopted steps to configure the model.
 
 
-<br>
-
 
 ## Usage
 
@@ -71,7 +68,7 @@ The user-interface for the `starrail` package is still in development. Once comp
 
 ***
 
-### 2. Command-Line 
+### 2. Command-Line Commands
 The `starrail` module provides a set of basic command-line commands to interact with the game. These features are intended to be integrated with the `starrail` user-interface in future updates.
 
 1. Configure `starrail`
@@ -96,7 +93,6 @@ starrail set-path
 starrail show-config
 ```
 
-<br>
 
 ## Disclaimer
 The "starrail" Python3-based module is an external script/tool
