@@ -71,24 +71,23 @@ The user-interface for the `starrail` package is still in development. Once comp
 ### 2. Command-Line Commands
 The `starrail` module provides a set of basic command-line commands to interact with the game. These features are intended to be integrated with the `starrail` user-interface in future updates.
 
-1. Configure `starrail`
-```
-starrail configure
-```
-
-2. Start Game
+1. Start Game
 ```
 starrail start
 ```
-3. Stop Game (started from `starrail start`)
+2. Stop Game (started from `starrail start`)
 ```
 starrail stop
 ```
-4. Overwrite StarRail's Path in `starrail`:
+3. Overwrite StarRail's Path in `starrail`:
 ```
 starrail set-path
 ```
-5. Show configuration status:
+4. Configure `starrail`
+```
+starrail configure
+```
+5. Show configuration Status:
 ```
 starrail show-config
 ```
