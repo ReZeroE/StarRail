@@ -26,5 +26,3 @@ import psutil
 import pytest
 import time
 import os
-from starrail import HonkaiStarRail
-h = HonkaiStarRail()

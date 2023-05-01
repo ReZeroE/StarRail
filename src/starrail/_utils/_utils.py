@@ -23,16 +23,15 @@
 
 import os
 import sys
-import win32api
+import string
 from termcolor import colored
 from ..constants import GAME_DEFAULT
 from .._exceptions._exceptions import *
 
 class StarRailGameDetector:
     def get_local_drives(self):
-        drives = win32api.GetLogicalDriveStrings()
-        drives = drives.split('\000')[:-1]
-        return drives
+        available_drives = ['%s:' % d for d in string.ascii_uppercase if os.path.exists('%s:' % d)]
+        return available_drives
     
     def find_game(self, paths=[], name=GAME_DEFAULT):
         for p in paths:
@@ -41,6 +40,8 @@ class StarRailGameDetector:
         
         if len(paths) == 0:
             paths = self.get_local_drives()
+        
+        paths = [f"{path}\\" if path.endswith(":") and len(path) == 2 else path for path in paths]
         
         for drive_path in paths:
             for root, _, files in os.walk(drive_path):
@@ -70,27 +71,7 @@ def print_path_config_ex():
     with open(DISCLAIMER_PATH, "r") as rf:
         lines = rf.readlines()
     print("".join(lines) + "\n")
-
-def get_local_drives():
-    drives = win32api.GetLogicalDriveStrings()
-    drives = drives.split('\000')[:-1]
-    return drives
-
-def find_game(name=GAME_DEFAULT, path="ALL_MOUNTED_DRIVES"):
     
-    if path == "ALL_MOUNTED_DRIVES":
-        for drive_path in get_local_drives():
-            for root, _, files in os.walk(drive_path):
-                if name in files:
-                    return os.path.join(root, name)
-        return None
-    elif os.path.exists(path):
-        for root, _, files in os.walk(path):
-            if name in files:
-                return os.path.join(root, name)
-        return None
-    else:
-        print("Path to find_game does not exist!"); exit()
 
 r_colors = {
     'warning'   : 'yellow',

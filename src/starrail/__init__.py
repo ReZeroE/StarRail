@@ -28,7 +28,7 @@ Provides Honkai Star Rail Gameplay Automation
 # SOFTWARE.
 
 __author__  = "Kevin L."
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __support__ = "Honkai Star Rail"
 __all__     = ["starrail"]
 
