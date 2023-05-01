@@ -60,7 +60,7 @@ and then follow the promopted steps to configure the module.
 
 ## Usage
 
-**Note: The module is currently still in an early stage of development and many intended features for this package is yet to be implemented. Please refer to the [CHANGELOG.md](https://github.com/ReZeroE/StarRail/blob/dev/CHANGELOG.md) for any recent updates.**
+**Note: The module is currently still in an early stage of development and many intended features for this package are yet to be implemented. Please refer to the [CHANGELOG.md](https://github.com/ReZeroE/StarRail/blob/dev/CHANGELOG.md) for any recent updates.**
 
 
 ### 1. User-Interface
