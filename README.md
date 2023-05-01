@@ -36,37 +36,37 @@ Features in development:
 - Auto Daily Login and In-Game Award Collection
 - Scheduler System For Schdeduling Tasks (login + grind + etc.)
 
+***
 
 ## Installation / Setup
 The install the `starrail` package, run:
 ```shell
 pip install starrail
 ```
-OR
+**OR**
 ```shell
 git clone https://github.com/ReZeroE/StarRail.git
 cd StarRail/
 pip install .
 ```
-***
-After `pip` installing the module, configure the module by calling:
+
+After `pip` installing the module, configure the module by running:
 ```
 starrail configure
 ```
-and then follow the promopted steps to configure the model.
+and then follow the promopted steps to configure the module.
 
-
+***
 
 ## Usage
 
-**Note: The module is currently still in an early stage of development and many intended features for this package is yet to be implemented. Please refer to the [CHANGELOG.md](https://github.com/ReZeroE/StarRail/blob/dev/CHANGELOG.md) for any recent updates.**
+**Note: The module is currently still in an early stage of development and many intended features for this package are yet to be implemented. Please refer to the [CHANGELOG.md](https://github.com/ReZeroE/StarRail/blob/dev/CHANGELOG.md) for any recent updates.**
 
 
 ### 1. User-Interface
 
 The user-interface for the `starrail` package is still in development. Once completed, it will be the main source for controlling all operations supported by `starrail`.
 
-***
 
 ### 2. Command-Line Commands
 The `starrail` module provides a set of basic command-line commands to interact with the game. These features are intended to be integrated with the `starrail` user-interface in future updates.
