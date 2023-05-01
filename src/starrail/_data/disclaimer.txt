@@ -3,13 +3,21 @@
 =====================================================================
 
 The "starrail" Python3-based module is an external script/tool
-designed to automate the gameplay of Honkai Star Rail. The creator of
-this package has no relationship with MiHoYo, the game's developer.
-The use of this package is entirely at the user's own risk, and the
-creator accepts no responsibility for any damage or loss caused by
-the package's use. It is the user's responsibility to ensure that
-they use the package according to Honkai Star Rail's Fair Gaming
-Declaration, and the creator accepts no responsibility for any
+designed to automate the gameplay of Honkai Star Rail. It is designed
+solely interacts with the game through the existing user interface,
+and it abides by the Fair Gaming Declaration set forth by COGNOSPHERE
+PTE. LTD. The package is designed to provide a streamlined and
+efficient way for users to interact with the game through features
+already provided within the game, and it does not, in any way, intend 
+to damage the balance of the game or provide any unfair advantages. 
+The package does not modify any game files or game code in any way.
+
+The creator(s) of this package has no relationship with MiHoYo, the
+game's developer. The use of this package is entirely at the user's
+own risk, and the creator accepts no responsibility for any damage or
+loss caused by the package's use. It is the user's responsibility to
+ensure that they use the package according to Honkai Star Rail's Fair
+Gaming Declaration, and the creator accepts no responsibility for any
 consequences resulting from its misuse, including game account
 penalties, suspension, or bans.
 
