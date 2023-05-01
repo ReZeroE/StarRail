@@ -25,22 +25,17 @@ Android/iOS emulators are not supported.
 
 ***
 
-## Updates (4/29/2023)
-
-The ongoing progress of the package's development will continue, albeit with a temporary suspension on incorporating newer updates that enhance the module's ability to interact with the game's content. At present, we are awaiting responses from Honkai: Star Rail's developers regarding the possibility of any infringement on their Fair Use Policies from using the `starrail` package (including the features we planned to implement).
-
-To learn more about this, feel free to read [Honkai: Star Rail's Fair Gaming Declaration](https://hsr.hoyoverse.com/en-us/news/111244).
-
-
 ## Overview
 
 The `starrail` package is a Python3-based module that facilitates the automation of various tasks pertaining to Honkai Star Rail. This package is currenly undergoing active development, and additional details will be made available in due course.
 
-Features in current development include:
-- Command-Line Support
-  - Starting / Terminating / Restarting the game
+Features in development:
+- `starrail` UI
 - Auto Resources Grind
-- Auto Daily Login and Award Collection
+- Auto Daily Login and In-Game Award Collection
+- Scheduler System For Schdeduling Tasks (login + grind + etc.)
+
+<br>
 
 ## Installation / Setup
 The install the `starrail` package, run:
@@ -53,16 +48,72 @@ git clone https://github.com/ReZeroE/StarRail.git
 cd StarRail/
 pip install .
 ```
+***
+After `pip` installing the module, configure the module by calling:
+```
+starrail configure
+```
+and then follow the promopted steps to configure the model.
 
-# Disclaimer
+
+<br>
+
+
+## Usage
+
+**Note: The module is currently still in an early stage of development and many intended features for this package is yet to be implemented. Please refer to the [CHANGELOG.md](https://github.com/ReZeroE/StarRail/blob/dev/CHANGELOG.md) for any recent updates.**
+
+
+### 1. User-Interface
+
+The user-interface for the `starrail` package is still in development. Once completed, it will be the main source for controlling all operations supported by `starrail`.
+
+***
+
+### 2. Command-Line 
+The `starrail` module provides a set of basic command-line commands to interact with the game. These features are intended to be integrated with the `starrail` user-interface in future updates.
+
+1. Configure `starrail`
+```
+starrail configure
+```
+
+2. Start Game
+```
+starrail start
+```
+3. Stop Game (started from `starrail start`)
+```
+starrail stop
+```
+4. Overwrite StarRail's Path in `starrail`:
+```
+starrail set-path
+```
+4. Show configuration status:
+```
+starrail show-config
+```
+
+<br>
+
+## Disclaimer
 The "starrail" Python3-based module is an external script/tool
-designed to automate the gameplay of Honkai Star Rail. The creator(s) 
-of this package has no relationship with MiHoYo, the game's developer.
-The use of this package is entirely at the user's own risk, and the
-creator accepts no responsibility for any damage or loss caused by
-the package's use. It is the user's responsibility to ensure that
-they use the package according to Honkai Star Rail's Fair Gaming
-Declaration, and the creator accepts no responsibility for any
+designed to automate the gameplay of Honkai Star Rail. It is designed
+solely interacts with the game through the existing user interface,
+and it abides by the Fair Gaming Declaration set forth by COGNOSPHERE
+PTE. LTD. The package is designed to provide a streamlined and
+efficient way for users to interact with the game through features
+already provided within the game, and it does not, in any way, intend 
+to damage the balance of the game or provide any unfair advantages. 
+The package does not modify any game files or game code in any way.
+
+The creator(s) of this package has no relationship with MiHoYo, the
+game's developer. The use of this package is entirely at the user's
+own risk, and the creator accepts no responsibility for any damage or
+loss caused by the package's use. It is the user's responsibility to
+ensure that they use the package according to Honkai Star Rail's Fair
+Gaming Declaration, and the creator accepts no responsibility for any
 consequences resulting from its misuse, including game account
 penalties, suspension, or bans.
 
