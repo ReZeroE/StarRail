@@ -70,7 +70,7 @@ The user-interface is the main source for controlling all operations supported b
 **NOTE: The UI shown below is currently NOT available as it is still in development. As such, it may undergo changes as we continue to improve and refine it.**
 
 ![caption](https://i.imgur.com/wtKt1Ma.png)
-![](https://i.imgur.com/eINRIr7.png)
+![](https://i.imgur.com/x45cBNP.png)
 
 ### 2. Command-Line Commands
 The `starrail` module provides a set of basic command-line commands to interact with the game. These features are intended to be integrated with the `starrail` user-interface in future updates.
