@@ -62,6 +62,8 @@ and then follow the promopted steps to configure the module.
 
 **Note: The module is currently still in an early stage of development and many intended features for this package are yet to be implemented. Please refer to the [CHANGELOG.md](https://github.com/ReZeroE/StarRail/blob/dev/CHANGELOG.md) for any recent updates.**
 
+1. [User-Interface](https://github.com/ReZeroE/StarRail#1-user-interface)
+2. [Command-Line Commands](https://github.com/ReZeroE/StarRail#2-command-line-commands)
 
 ### 1. User-Interface - `IN DEVELOPMENT`
 
