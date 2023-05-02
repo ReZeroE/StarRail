@@ -63,10 +63,13 @@ and then follow the promopted steps to configure the module.
 **Note: The module is currently still in an early stage of development and many intended features for this package are yet to be implemented. Please refer to the [CHANGELOG.md](https://github.com/ReZeroE/StarRail/blob/dev/CHANGELOG.md) for any recent updates.**
 
 
-### 1. User-Interface
+### 1. User-Interface - `IN DEVELOPMENT`
 
-The user-interface for the `starrail` package is still in development. Once completed, it will be the main source for controlling all operations supported by `starrail`.
+The user-interface is the main source for controlling all operations supported by `starrail` (auto resource grind, daily login, etc.). The UI is designed to hover on top of the game as shown below, providing easy access and control over different operations supported by the module.
 
+**NOTE: The UI shown below is currently NOT available as it is still in development. As such, it may undergo changes as we continue to improve and refine it. We are committed to ensuring that the UI is user-friendly, resource-efficient, and stable, so we are taking our time to get it right. We plan to push out this update with the UI at a later date, likely by the end of the month (5/2023), so please stay tuned for updates.**
+
+![caption](https://i.imgur.com/wtKt1Ma.png)
 
 ### 2. Command-Line Commands
 The `starrail` module provides a set of basic command-line commands to interact with the game. These features are intended to be integrated with the `starrail` user-interface in future updates.
