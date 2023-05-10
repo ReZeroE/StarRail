@@ -30,7 +30,7 @@ from termcolor import colored
 from colorama import init; init() 
 
 from .._utils._utils import *
-from .._utils.loader.loader import Loader 
+from .._bin.loader.loader import Loader 
 from .._exceptions._exceptions import *
 from .._config.config_handler import ConfigHandler
 from ..honkai_star_rail import HonkaiStarRail
@@ -363,7 +363,3 @@ def execute_command():
     elif args.command == "show-config":
         endpoint_handler.display_config()
 
-if __name__ == "__main__":
-    pass
-        
-    

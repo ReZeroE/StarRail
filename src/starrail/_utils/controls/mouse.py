@@ -21,10 +21,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import subprocess
-import psutil
-import pytest
-import time
-import os
 import time
 import pyautogui
+pyautogui.FAILSAFE = False
+
+class StarRailMouse:
+    def __init__(self):
+        self.click_offset = 1
+    
+    def move_mouse_to_button(self, coords, correction_x=5, correction_y=5, duration=1):
+        x = coords[0]
+        y = coords[1]
+        pyautogui.moveTo(x + correction_x, y + correction_y, duration=duration)
+
+    def click_mouse(self):
+        pyautogui.click()
+        time.sleep(self.click_offset)

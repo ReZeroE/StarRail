@@ -1,5 +1,8 @@
 # Change Log
 
+### Version 0.0.3 - [5/10/2023]
+This section will be upated at a later point.
+
 ### Version 0.0.3 - [5/1/2023]
 1. Removed faulty dependencies that cannot be properly installed from PyPI
 2. Resolved game path auto-detection issue

@@ -21,10 +21,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import subprocess
-import psutil
-import pytest
-import time
 import os
-import time
-import pyautogui
+
+# ================================
+# ======| BASE TEMPLATE | ========
+# ================================
+BASE_TEMPLATE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "_data", "images", "templates")
+
+
+# =================================
+# ======| LOGIN TEMPLATE | ========
+# =================================
+LOGIN_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_PATH, "login")
+LOGIN_PROCESS_MAP = {
+    "start_game"    : None,
+    "login"         : "title_screen.png"
+}
+
+# =================================
+# ======| GRIND TEMPLATE | ========
+# =================================

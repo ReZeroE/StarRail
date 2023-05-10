@@ -6,6 +6,10 @@ requires = [
     "pytest",
     "colorama",
     "psutil",
+    "customtkinter",
+    "opencv-python",
+    "numpy",
+    "pyautogui",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"
