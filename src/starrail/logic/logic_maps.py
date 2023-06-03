@@ -162,12 +162,8 @@ if __name__ == "__main__":
         validate_success = True
         for map in MAPS:
             for _, meta in map.items():
-                try:
-                    path = meta['path']
-                except:
-                    continue
-                if path is not None and os.path.isfile(path) == False and meta['dynamic_path'] == False:
-                    print(f"Invalid Path: {path}")
+                if meta is not None and not os.path.isfile(meta['path']) and meta['dynamic_path'] == False:
+                    print(f"Invalid Path: {meta['path']}")
                     validate_success = False
         return validate_success
     
