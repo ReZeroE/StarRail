@@ -24,15 +24,27 @@
 import os
 import sys
 import string
+import pyautogui
+from concurrent import futures
+
 from termcolor import colored
 from ..constants import GAME_DEFAULT
 from .._exceptions._exceptions import *
 
 class StarRailGameDetector:
+    """
+    Honkai Star Rail Game Detector - Finds the game on local drives
+    """
     def get_local_drives(self):
         available_drives = ['%s:' % d for d in string.ascii_uppercase if os.path.exists('%s:' % d)]
         return available_drives
-    
+
+    def find_game_in_path(self, path, name):
+        for root, _, files in os.walk(path):
+            if name in files:
+                return os.path.join(root, name)
+        return None
+
     def find_game(self, paths=[], name=GAME_DEFAULT):
         for p in paths:
             if not os.path.exists(p):
@@ -43,11 +55,34 @@ class StarRailGameDetector:
         
         paths = [f"{path}\\" if path.endswith(":") and len(path) == 2 else path for path in paths]
         
-        for drive_path in paths:
-            for root, _, files in os.walk(drive_path):
-                if name in files:
-                    return os.path.join(root, name)
+        worker_threads = 1
+        if os.cpu_count() > 1:
+            worker_threads = os.cpu_count() - 1
+        with futures.ProcessPoolExecutor(max_workers=worker_threads) as executor:
+            future_to_path = {executor.submit(self.find_game_in_path, path, name): path for path in paths}
+            for future in futures.as_completed(future_to_path):
+                result = future.result()
+                if result is not None:
+                    for future in future_to_path:
+                        future.cancel()
+                    return result
         return None
+
+
+class StarRailScreenshotController:
+    """
+    Honkai Star Rail Screenshot Controller - Takes and stores in-game screenshots for processing
+    """
+    def __init__(self):
+        self.__screenshot_abspath = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_data", "images", "screenshots", "screenshot.png")
+    
+    def get_screenshot_path(self):
+        return self.__screenshot_abspath
+    
+    def take_screenshot(self):
+        myScreenshot = pyautogui.screenshot()
+        myScreenshot.save(self.__screenshot_abspath)
+        assert(os.path.isfile(self.__screenshot_abspath))
 
 
 def check_platform():
@@ -61,13 +96,13 @@ def check_platform():
     return os.name == "nt"
 
 def print_disclaimer():
-    DISCLAIMER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_data", "disclaimer.txt")
+    DISCLAIMER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_data", "textfiles", "disclaimer.txt")
     with open(DISCLAIMER_PATH, "r") as rf:
         lines = rf.readlines()
     print("".join(lines) + "\n")
-    
+
 def print_path_config_ex():
-    DISCLAIMER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_data", "path_config_ex.txt")
+    DISCLAIMER_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_data", "textfiles", "path_config_ex.txt")
     with open(DISCLAIMER_PATH, "r") as rf:
         lines = rf.readlines()
     print("".join(lines) + "\n")

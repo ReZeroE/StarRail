@@ -1,6 +1,3 @@
-# SPDX-License-Identifier: MIT
-# MIT License
-#
 # Copyright (c) 2023 Kevin L.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,10 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import subprocess
-import psutil
-import pytest
-import time
-import os
-import time
-import pyautogui
+from .sr_stage import SRStage
+
+class SRScreen:
+    def __init__(self):
+        self.stage = None
+        self.coordinates = None
+    
+    

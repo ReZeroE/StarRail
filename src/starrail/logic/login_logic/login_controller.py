@@ -21,10 +21,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import subprocess
-import psutil
-import pytest
-import time
 import os
+import sys
 import time
-import pyautogui
+
+from ..logic_maps import LOGIN_PROCESS_MAP
+from ..base_logic import StarRailLogicController
+
+class StarRailLoginController:
+    def __init__(self):
+        self.logic_controller = StarRailLogicController()
+    
+    def base_login(self):
+        run_success = self.logic_controller.run_logic_map(logic_map=LOGIN_PROCESS_MAP)
+        self.logic_controller.return_to_base_menu_screen()
+        return run_success

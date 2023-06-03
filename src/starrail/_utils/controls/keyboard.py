@@ -1,3 +1,4 @@
+
 # SPDX-License-Identifier: MIT
 # MIT License
 #
@@ -21,10 +22,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import subprocess
-import psutil
-import pytest
 import time
-import os
-import time
-import pyautogui
+from pynput.keyboard import Key, Controller
+
+class StarRailKeyboard:
+    def __init__(self):
+        self.keyboard = Controller()
+        self.click_offset = 1
+
+    def click_esc(self):
+        self.keyboard.press(key=Key.esc)
+        self.keyboard.release(key=Key.esc)
+        time.sleep(self.click_offset)
+
+

@@ -36,6 +36,9 @@ __all__     = ["starrail"]
 from ._utils._utils import *
 from ._exceptions._exceptions import *
 from .honkai_star_rail import HonkaiStarRail
+from .logic.grind_logic.grind_controller import StarRailGrindController
+from .logic.login_logic.login_controller import StarRailLoginController # LOG-IN Controller, NOT Logic Controller
+from .logic.rewards_logic.rewards_controller import StarRailRewardsController
 
 if check_platform() == False:
     raise StarRailOSNotSupported()
