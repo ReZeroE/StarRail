@@ -22,7 +22,7 @@ Android/iOS emulators are not supported.
 </ul>
 <br clear="left"/>
 
-**Note: This package is currently under development - [`Development Status :: 1 - Planning`]**
+**Note: This package is currently under development - [`Development Status :: 3 - Alpha`]**
 
 ***
 
@@ -32,9 +32,13 @@ The `starrail` package is a Python3-based module that facilitates the automation
 
 Features in development:
 - `starrail` UI
-- Auto Resources Grind
-- Auto Daily Login and In-Game Award Collection
+- Auto Grind
+  - Calyx Variations
+  - Simulated Universe (planning)
+- Auto Daily Login and In-Game Reward Collection
 - Scheduler System For Schdeduling Tasks (login + grind + etc.)
+
+Due to the extended development cycle of the UI, we have decided to prioritize the release of features through the Command Line Interface (CLI) first. 
 
 ***
 
@@ -67,7 +71,7 @@ and then follow the promopted steps to configure the module.
 
 ### 1. User-Interface - `IN DEVELOPMENT`
 
-The user-interface is the main source for controlling all operations supported by `starrail` (auto resource grind, daily login, etc.). The UI is designed to hover on top of the game as shown below, providing easy access and control over different operations supported by the module.
+The user-interface is the main source for controlling all operations supported by `starrail` (auto resource grind, daily login, etc.). The UI is designed to hover on top of the game as shown below, providing easy access and control over different operations supported by the module. 
 
 **NOTE: The UI shown below is currently NOT available as it is still in development. As such, it may undergo changes as we continue to improve and refine it.**
 

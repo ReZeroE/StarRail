@@ -2,13 +2,14 @@
 
 ### Version 0.0.3 - [6/3/2023]
 1. Added Logic Map for Calyx Golden (bud_of_memories, bud_of_aether, bud_of_threasures)
-2. Tested automation features in login, reward collection, and Calyx Golden.
+2. Tested automation features for login, reward collection, and Calyx Golden.
+3. Implemented "secondary image detection" with SIFT and FLANN for non-centered buttons (non-centered buttons were previously tracked with pixels offsets (x, y)).   
 
 ### Version 0.0.3 - [6/1/2023]
 1. Implemented "Logic Maps" structures (process sequence maps for automation).
 2. Implemented base wrapper classes for auto grind(Calyx), reward collection, and login that utilizes the Logic Maps for automation.
 3. Added Logic Maps for login and reward collection.
-4. Added new utils functions.
+4. Updated project code structure.
 
 ### Version 0.0.3 - [5/21/2023]
 1. Implemented SIFT (Scale Invariant Feature Transform) algorithm for feature detection and description, and FLANN (Fast Library for Approximate Nearest Neighbors) for feature matching. This is used to auto-detect buttons on-screen for executing process sequences. 
