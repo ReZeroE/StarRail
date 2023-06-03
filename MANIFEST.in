@@ -1,4 +1,4 @@
 include src/starrail/_config/*.json
 include src/starrail/_data/textfiles/*.txt
-include src/starrail/_data/images/templates/*/*.png
-include src/starrail/_data/images/templates/*/*.jpg
+include src/starrail/_data/images/templates/*/**/*.png
+include src/starrail/_data/images/templates/*/**/*.jpg

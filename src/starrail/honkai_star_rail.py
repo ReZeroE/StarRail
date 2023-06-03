@@ -49,7 +49,7 @@ class HonkaiStarRail:
                 if p.name() == GAME_DEFAULT:
                     try:
                         self.process = psutil.Process(p.pid)
-                        return True    
+                        return True
                     except Exception as ex:
                         print(ex.__traceback__)
             time.sleep(1)

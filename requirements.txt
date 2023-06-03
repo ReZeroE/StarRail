@@ -7,3 +7,4 @@ customtkinter
 opencv-python
 numpy
 pyautogui
+pynput

@@ -1,3 +1,4 @@
+
 # SPDX-License-Identifier: MIT
 # MIT License
 #
@@ -20,3 +21,18 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+
+import time
+from pynput.keyboard import Key, Controller
+
+class StarRailKeyboard:
+    def __init__(self):
+        self.keyboard = Controller()
+        self.click_offset = 1
+
+    def click_esc(self):
+        self.keyboard.press(key=Key.esc)
+        self.keyboard.release(key=Key.esc)
+        time.sleep(self.click_offset)
+
+

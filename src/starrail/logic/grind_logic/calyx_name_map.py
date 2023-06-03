@@ -21,23 +21,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
-
-# ================================
-# ======| BASE TEMPLATE | ========
-# ================================
-BASE_TEMPLATE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "_data", "images", "templates")
-
-
-# =================================
-# ======| LOGIN TEMPLATE | ========
-# =================================
-LOGIN_TEMPLATE_PATH = os.path.join(BASE_TEMPLATE_PATH, "login")
-LOGIN_PROCESS_MAP = {
-    "start_game"    : None,
-    "login"         : "title_screen.png"
+CALYX_GOLDEN_NAME_MAP = {
+    "bud_of_memories"       : "bud-of-memories.png",
+    "bud_of_aether"         : "bud-of-aether.png",
+    "bud_of_threasures"     : "bud-of-treasure.png"
 }
 
-# =================================
-# ======| GRIND TEMPLATE | ========
-# =================================
+CALYX_CRIMSON_NAME_MAP = {
+    "CALYX_CRIMSON" : {
+        "bud_of_destruction": "",
+        "bud_of_perservation": "",
+        "bud_of_abundance": "",
+        "bud_of_harmony": "",
+        "bud_of_the_hunt": "",
+        "bud_of_erudition": "",
+        "bud_of_nihility": ""
+    }
+}

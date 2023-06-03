@@ -7,6 +7,9 @@ src/starrail/_utils/cv2_SIFT/tmp_data
 # Incomplete UI scripts
 src/starrail/user_interface/ui*.py
 
+# Temp Test Scritps
+tests/tmp*test.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

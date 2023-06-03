@@ -39,9 +39,9 @@ Features in development:
 ***
 
 ## Installation / Setup
-The install the `starrail` package, run:
+The install or update the `starrail` package, run:
 ```shell
-pip install starrail
+pip install starrail -U
 ```
 **OR**
 ```shell

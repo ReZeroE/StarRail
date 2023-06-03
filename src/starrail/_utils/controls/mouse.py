@@ -29,7 +29,7 @@ class StarRailMouse:
     def __init__(self):
         self.click_offset = 1
     
-    def move_mouse_to_button(self, coords, correction_x=5, correction_y=5, duration=1):
+    def move_mouse_to_button(self, coords, correction_x=0, correction_y=0, duration=1):    
         x = coords[0]
         y = coords[1]
         pyautogui.moveTo(x + correction_x, y + correction_y, duration=duration)
