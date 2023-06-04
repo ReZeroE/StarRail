@@ -142,7 +142,7 @@ class StarRailCommandLineEndPoints:
         headers = ["Configuration", "Status"]
         config_table = [
             ["User Agreement",      disclaimer_status],
-            ["StarRail Path Setup", game_path_set]
+            ["StarRail Path Setup", game_path_set if game_path_configured == False else f"{game_path_set} ({config_handler.get_game_path()})"]
         ]
         
         # Print config table
@@ -151,7 +151,6 @@ class StarRailCommandLineEndPoints:
             print(tabulate(config_table, headers, tablefmt="fancy_outline") + "\n")
         except UnicodeEncodeError:
             print(tabulate(config_table, headers, tablefmt="outline") + "\n")
-
 
     # =========================================
     # ========= | Endpoints Helpers | =========

@@ -1,5 +1,12 @@
 # Change Log
 
+### Version 0.0.3 - [6/4/2023]
+1. Added new rewards logic maps (Daily Training, Assignments)
+2. Restructured the code framework of logic maps for better optimization.
+3. The starrail show-config command now displays the absolute path of the game executable after configuration.
+4. Adjusted image feature matching values to allow for less accurate matches in specific circumstances.
+5. The time delay following a simulated mouse or keyboard key click has been extended.
+
 ### Version 0.0.3 - [6/3/2023]
 1. Added Logic Map for Calyx Golden (bud_of_memories, bud_of_aether, bud_of_threasures)
 2. Tested automation features for login, reward collection, and Calyx Golden.
