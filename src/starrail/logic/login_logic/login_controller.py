@@ -36,3 +36,7 @@ class StarRailLoginController:
         run_success = self.logic_controller.run_logic_map(logic_map=LOGIN_PROCESS_MAP)
         self.logic_controller.return_to_base_menu_screen()
         return run_success
+    
+    def base_logout(self):
+        run_success = self.logic_controller.execute_process("end_game")
+        return run_success

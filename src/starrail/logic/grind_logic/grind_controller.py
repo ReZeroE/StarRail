@@ -27,7 +27,7 @@ import time
 from copy import deepcopy
 
 from .calyx_name_map import CALYX_GOLDEN_NAME_MAP, CALYX_CRIMSON_NAME_MAP
-from ..logic_maps import ACCESS_CALYX_GOLDEN_PROCESS_MAP, CALYX_CRIMSON_PROCESS_MAP, RUN_CALYX_PROCESS_MAP, LOOP_CALYX_PROCESS_MAP
+from ..logic_maps import ACCESS_CALYX_GOLDEN_PROCESS_MAP, ACCESS_CALYX_CRIMSON_PROCESS_MAP, RUN_CALYX_PROCESS_MAP, LOOP_CALYX_PROCESS_MAP, MouseProcess, ScreenVerificationProcess
 from ..base_logic import StarRailLogicController
 
 class StarRailGrindController:
@@ -39,16 +39,16 @@ class StarRailGrindController:
     
     def access_golden_calyx(self, calyx_name=None):
         # Set Calyx Flower in Calyx Golden 
-        access_calyx_golden_process_map_cp = deepcopy(ACCESS_CALYX_GOLDEN_PROCESS_MAP)
-        for p_header, p_meta in ACCESS_CALYX_GOLDEN_PROCESS_MAP.items():
-            if p_meta != None and p_meta['dynamic_path'] == True:
-                access_calyx_golden_process_map_cp[p_header]["path"] = p_meta['path'].replace("XXX", CALYX_GOLDEN_NAME_MAP[calyx_name])
-        
-        # Navigate to home screen with menu
-        self.logic_controller.return_to_base_menu_screen()
+        for sim_process in ACCESS_CALYX_GOLDEN_PROCESS_MAP._logic_map:
+            if isinstance(sim_process, MouseProcess) or isinstance(sim_process, ScreenVerificationProcess):
+                if sim_process.dynamic_path == True:
+                    sim_process.update_dynamic_template_path(filename=CALYX_GOLDEN_NAME_MAP[calyx_name])
+
+        # # Navigate to home screen with menu
+        # self.logic_controller.return_to_base_menu_screen()
         
         # Run logic map to access the Calyx page
-        run_success = self.logic_controller.run_logic_map(logic_map=access_calyx_golden_process_map_cp)
+        run_success = self.logic_controller.run_logic_map(logic_map=ACCESS_CALYX_GOLDEN_PROCESS_MAP)
         return run_success
     
     

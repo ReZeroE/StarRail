@@ -3,7 +3,7 @@
         "pid": null
     },
     "module-config": {
-        "game-abspath": "C:",
+        "game-abspath": "C:\\",
         "disclaimer-read": false
     }
 }

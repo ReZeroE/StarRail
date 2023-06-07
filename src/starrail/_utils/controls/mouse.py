@@ -27,7 +27,7 @@ pyautogui.FAILSAFE = False
 
 class StarRailMouse:
     def __init__(self):
-        self.click_offset = 1
+        self.click_offset = 3
     
     def move_mouse_to_button(self, coords, correction_x=0, correction_y=0, duration=1):    
         x = coords[0]

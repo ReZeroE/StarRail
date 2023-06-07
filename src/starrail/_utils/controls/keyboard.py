@@ -28,7 +28,7 @@ from pynput.keyboard import Key, Controller
 class StarRailKeyboard:
     def __init__(self):
         self.keyboard = Controller()
-        self.click_offset = 1
+        self.click_offset = 2
 
     def click_esc(self):
         self.keyboard.press(key=Key.esc)

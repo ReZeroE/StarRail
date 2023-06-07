@@ -25,15 +25,34 @@ import os
 import sys
 import time
 
-from ..logic_maps import NAMELESS_HONORS_REWARDS_PROCESS_MAP
+from ..logic_maps import NAMELESS_HONORS_REWARDS_PROCESS_MAP, ASSIGNMENT_REWARDS_PROCESS_MAP, ACCESS_DAILY_TRAINING_REWARDS_PROCESS_MAP, LOOP_DAILY_TRAINING_REWARDS_PROCESS_MAP
 from ..base_logic import StarRailLogicController
 
 class StarRailRewardsController:
     def __init__(self):
         self.logic_controller = StarRailLogicController()
         
-    def base_get_rewards(self):
+    def get_nameless_honor_rewards(self):
         run_success = self.logic_controller.run_logic_map(logic_map=NAMELESS_HONORS_REWARDS_PROCESS_MAP)
         self.logic_controller.return_to_base_menu_screen()
         return run_success
     
+    def get_assignment_rewards(self):
+        run_success = self.logic_controller.run_logic_map(logic_map=ASSIGNMENT_REWARDS_PROCESS_MAP)
+        self.logic_controller.return_to_base_menu_screen()
+        return run_success
+    
+    def get_daily_training_rewards(self):
+        run_success = self.logic_controller.run_logic_map(logic_map=ACCESS_DAILY_TRAINING_REWARDS_PROCESS_MAP)
+        while True:
+            loop_success = self.logic_controller.run_logic_map(logic_map=LOOP_DAILY_TRAINING_REWARDS_PROCESS_MAP)
+            if loop_success == False:
+                break
+        self.logic_controller.return_to_base_menu_screen()
+        return run_success
+    
+    def get_all_rewards(self):
+        s1 = self.get_nameless_honor_rewards()
+        s2 = self.get_assignment_rewards()
+        s3 = self.get_daily_training_rewards()
+        return s1 and s2 and s3
