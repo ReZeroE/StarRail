@@ -86,9 +86,8 @@ class StarRailImageMatcher:
             if m.distance < 0.60 * n.distance:
                 good.append(m)
 
-        # print(len(good))
         if len(good) >= MATCH_THRESHOLD:
-            print("Good matches are found - %d/%d" % (len(good), MATCH_THRESHOLD))
+            # print("Good matches are found - %d/%d" % (len(good), MATCH_THRESHOLD))
             src_pts = np.float32([keypoints1[m.queryIdx].pt for m in good]).reshape(-1, 1, 2)
             dst_pts = np.float32([keypoints2[m.trainIdx].pt for m in good]).reshape(-1, 1, 2)
 
@@ -154,7 +153,6 @@ class StarRailImageMatcher:
             curr_threshold = curr_threshold * 0.4
             
         if curr_threshold < 1: curr_threshold = 1
-        print(f"downgraded threshold {curr_threshold}")
         return int(curr_threshold)
 
     def mask_unmatched_space(self, original_img, dst):
