@@ -145,14 +145,6 @@ EXIT_BTN_PATH           = os.path.join(__grind_templete_path, "calyx", "challeng
 # ======| LOGIN TEMPLATE | ========
 # =================================
 
-
-# LOGIN_PROCESS_MAP = {
-#     "1 [execute]  start_game"             : None,
-#     "2 [mouse]    login"                  : {"path": os.path.join(__login_template_path, "title_screen.png"),     "offset": (0, 0),   "match_override_val": None, "dynamic_path": False, "secondary_path": None, "break_on_fail": False},
-#     "3 [verify]   base_screen"            : {"path": os.path.join(__general_template_path, "base-screen.png"),    "offset": (0, 0),   "match_override_val": None, "dynamic_path": False, "secondary_path": None, "break_on_fail": False},
-#     "4 [end]      terminate_process"      : None
-# }
-
 LOGIN_PROCESS_MAP = LogicMap()
 LOGIN_PROCESS_MAP.add_processes(
     [
@@ -168,26 +160,17 @@ LOGIN_PROCESS_MAP.add_processes(
 # ======| AWARDS TEMPLATE | ========
 # ==================================
 
-# NAMELESS_HONORS_REWARDS_PROCESS_MAP = {
-#     "1 [verify]   base_screen_with_menu"      : {"path": os.path.join(__general_template_path, "base-screen-with-menu.png"),      "offset": (0, 0),   "match_override_val": None, "dynamic_path": False, "secondary_path": None, "break_on_fail": False},
-#     "2 [mouse]    open_nameless_honors"       : {"path": os.path.join(__rewards_template_path, "nameless-honors-access.png"),     "offset": (0, 0),   "match_override_val": None, "dynamic_path": False, "secondary_path": None, "break_on_fail": False},
-#     "3 [mouse]    open_missions_tab"          : {"path": os.path.join(__rewards_template_path, "missions.png"),                   "offset": (0, 0),   "match_override_val": None, "dynamic_path": False, "secondary_path": None, "break_on_fail": False},
-#     "4 [mouse]    claim_all_rewards"          : {"path": os.path.join(__rewards_template_path, "claim-all-button.png"),           "offset": (0, 0),   "match_override_val": None, "dynamic_path": False, "secondary_path": None, "break_on_fail": False},
-#     "5 [keyboard] exit_page"                  : None,
-#     "6 [verify]   base_screen_with_menu"      : {"path": os.path.join(__general_template_path, "base-screen-with-menu.png"),      "offset": (0, 0),   "match_override_val": None, "dynamic_path": False, "secondary_path": None, "break_on_fail": False},
-#     "7 [end]      terminate_process"          : None
-# }
-
 NAMELESS_HONORS_REWARDS_PROCESS_MAP = LogicMap()
 NAMELESS_HONORS_REWARDS_PROCESS_MAP.add_processes(
     [
-        ScreenVerificationProcess   (sproc_name="base_screen_with_menu",    template_path=os.path.join(__general_template_path, "base-screen-with-menu.png")        ),
-        MouseProcess                (sproc_name="open_nameless_honors",     template_path=os.path.join(__rewards_template_path, "nameless-honors-access.png")       ),
-        MouseProcess                (sproc_name="open_missions_tab",        template_path=os.path.join(__rewards_template_path, "missions.png")                     ),
-        ScreenVerificationProcess   (sproc_name="verify_claim_all_rewards", template_path=os.path.join(__rewards_template_path, "claim-all-button.png"),            timeout=10),
-        MouseProcess                (sproc_name="claim_all_rewards",        template_path=os.path.join(__rewards_template_path, "claim-all-button.png")             ),
-        KeyboardProcess             (sproc_name="exit_page"                 ),
-        ScreenVerificationProcess   (sproc_name="base_screen_with_menu",    template_path=os.path.join(__general_template_path, "base-screen-with-menu.png")        ),
+        ScreenVerificationProcess   (sproc_name="base_screen_with_menu",        template_path=os.path.join(__general_template_path, "base-screen-with-menu.png")        ),
+        ScreenVerificationProcess   (sproc_name="verify_open_nameless_honors",  template_path=os.path.join(__rewards_template_path, "nameless-honors-access.png"),      timeout=10),
+        MouseProcess                (sproc_name="open_nameless_honors",         template_path=os.path.join(__rewards_template_path, "nameless-honors-access.png")       ),
+        MouseProcess                (sproc_name="open_missions_tab",            template_path=os.path.join(__rewards_template_path, "missions.png")                     ),
+        ScreenVerificationProcess   (sproc_name="verify_claim_all_rewards",     template_path=os.path.join(__rewards_template_path, "claim-all-button.png"),            timeout=10),
+        MouseProcess                (sproc_name="claim_all_rewards",            template_path=os.path.join(__rewards_template_path, "claim-all-button.png")             ),
+        KeyboardProcess             (sproc_name="exit_page"                     ),
+        ScreenVerificationProcess   (sproc_name="base_screen_with_menu",        template_path=os.path.join(__general_template_path, "base-screen-with-menu.png")        ),
         EndProcess()
     ]
 )
@@ -196,6 +179,7 @@ ASSIGNMENT_REWARDS_PROCESS_MAP = LogicMap()
 ASSIGNMENT_REWARDS_PROCESS_MAP.add_processes(
     [
         ScreenVerificationProcess   (sproc_name="base_screen_with_menu",            template_path=os.path.join(__general_template_path, "base-screen-with-menu.png")    ),
+        ScreenVerificationProcess    (sproc_name="verify_open_assignments",         template_path=os.path.join(__rewards_template_path, "assignments-access.png"),      timeout=10),
         MouseProcess                (sproc_name="open_assignments",                 template_path=os.path.join(__rewards_template_path, "assignments-access.png")       ),
         ScreenVerificationProcess   (sproc_name="verify_claim_assignment_reward",   template_path=os.path.join(__rewards_template_path, "claim-button.png"),            timeout=10),
         MouseProcess                (sproc_name="claim_assignment_reward",          template_path=os.path.join(__rewards_template_path, "claim-button.png")             ),
@@ -218,8 +202,8 @@ ACCESS_DAILY_TRAINING_REWARDS_PROCESS_MAP.add_processes(
 LOOP_DAILY_TRAINING_REWARDS_PROCESS_MAP = LogicMap()
 LOOP_DAILY_TRAINING_REWARDS_PROCESS_MAP.add_processes(
     [
-        ScreenVerificationProcess   (sproc_name="verify_claim_daily_training_reward",        template_path=os.path.join(__rewards_template_path, "claim-daily-training-button.png"),   timeout=10, sift_match_override_val=40),
-        MouseProcess                (sproc_name="claim_daily_training_reward",               template_path=os.path.join(__rewards_template_path, "claim-daily-training-button.png")    ),
+        ScreenVerificationProcess   (sproc_name="verify_claim_daily_training_reward",        template_path=os.path.join(__rewards_template_path, "claim-daily-training-button.png"),   timeout=10, sift_match_override_val=35),
+        MouseProcess                (sproc_name="claim_daily_training_reward",               template_path=os.path.join(__rewards_template_path, "claim-daily-training-button.png"),   sift_match_override_val=35),
     ]
 )
 
@@ -262,7 +246,7 @@ RUN_CALYX_PROCESS_MAP.add_processes(
 LOOP_CALYX_PROCESS_MAP = LogicMap()
 LOOP_CALYX_PROCESS_MAP.add_processes(
     [
-        ScreenVerificationProcess   (sproc_name="challenge_complete",   template_path=os.path.join(__calyx_templete_path, "challenge-completed.png"),   sift_match_override_val=80),
+        ScreenVerificationProcess   (sproc_name="challenge_complete",   template_path=os.path.join(__calyx_templete_path, "challenge-completed.png"),   timeout=300, sift_match_override_val=80),
         MouseProcess                (sproc_name="challenge_again",      template_path=os.path.join(__calyx_templete_path, "challenge-again.png")        ),
         EndProcess()
     ]
@@ -274,10 +258,6 @@ LOOP_CALYX_PROCESS_MAP.add_processes(
 # ==================================
 # ======| HELPER TEMPLATE | ========
 # ==================================
-
-FAIL_SAFT_PROCESS_MAP = {
-    
-}
 
 
 MAPS = [
@@ -293,8 +273,6 @@ MAPS = [
     RUN_CALYX_PROCESS_MAP,
     LOOP_CALYX_PROCESS_MAP
 ]
-
-
 
 
 # MAP VALIDATION (ensures all mapped templates exist)
@@ -314,17 +292,3 @@ if __name__ == "__main__":
     
     if validate_maps():
         print("All maps are good.")
-    
-    
-#     def validate_maps():
-#         validate_success = True
-#         for map in MAPS:
-#             for _, meta in map.items():
-#                 if meta is not None and not os.path.isfile(meta['path']) and meta['dynamic_path'] == False:
-#                     print(f"Invalid Path: {meta['path']}")
-#                     validate_success = False
-#         return validate_success
-    
-#     if validate_maps():
-#         print("All maps are good.")
-    

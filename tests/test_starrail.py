@@ -26,5 +26,28 @@ import psutil
 import pytest
 import time
 import os
-import time
 import pyautogui
+
+# ===============================================
+# ==== | THE FOLLOWING IS FOR TESTING ONLY | ====
+# ===============================================
+if __name__ == "__main__":
+    
+    import time
+    import starrail
+    import traceback
+    
+    login_controller    = starrail.StarRailLoginController()
+    grind_controller    = starrail.StarRailGrindController()
+    rewards_controller  = starrail.StarRailRewardsController()
+    
+    try:
+        login_controller.base_login()                                           # Start and login to game
+        grind_controller.access_golden_calyx(calyx_name="bud_of_threasures")    # Access Golden Calyx - Bud of Threasures
+        grind_controller.run_calyx()                                            # Run Calyx (max waves with auto stamina detection)
+        rewards_controller.get_all_rewards()                                    # Get supported rewards
+        login_controller.base_logout()                                          # Logout and exit game
+
+    except Exception as ex:
+        traceback.print_exc()
+        time.sleep(20)

@@ -184,7 +184,6 @@ class StarRailCommandLineEndPoints:
                 return True # Configuration complete
             return False # Already configured
         
-        
         config_handler = ConfigHandler()
         
         # Config chart already displayed on error

@@ -53,8 +53,6 @@ class StarRailImageMatcher:
         :show_match: generate a visualization for the match. Defaulted to False for optimization. 
         """
         
-        MATCH_THRESHOLD = 50 if not isinstance(override_threshold, int) else override_threshold
-        
         if isinstance(template, str):
             img1 = cv2.imread(template, cv2.IMREAD_GRAYSCALE)
         else: img1 = template
@@ -62,6 +60,9 @@ class StarRailImageMatcher:
         if isinstance(screenshot, str):
             img2 = cv2.imread(screenshot, cv2.IMREAD_GRAYSCALE)
         else: img2 = screenshot
+        
+        MATCH_THRESHOLD = 50 if not isinstance(override_threshold, int) else override_threshold
+        MATCH_THRESHOLD = self.downscale_match_threshold(img2, MATCH_THRESHOLD)
 
         # Initialize SIFT detector
         sift = cv2.SIFT_create()
@@ -120,28 +121,66 @@ class StarRailImageMatcher:
             return None, None, None, None
         
 
+    def downscale_match_threshold(self, screenshot, curr_threshold):
+        """
+        Downscale feature matching threshold based on the screen resolution.
+        
+        NOTE: The user MUST set the in-game resolution to the native screen resolution or higher. 
+            Lower in-game resolution (incorrect threshold downscale) may lead to false positives in feature matches.
+            
+         - 4K       => * 1.0
+         - 2K       => * 0.8
+         - 1080P    => * 0.6
+         - Other    => * 0.4
+         
+         :param screenshot: The screenshot image
+         :curr_threshold: The original threshold to downscale
+        """
+        if isinstance(screenshot, None.__class__):
+            return curr_threshold
+        
+        def get_image_resolution(screenshot: cv2.Mat):
+            height, width = screenshot.shape
+            return height, width
+        
+        height, width = get_image_resolution(screenshot)
+        if width >= 3840 and height >= 2160:
+            return curr_threshold
+        elif width >= 2560 and height >= 1200:
+            curr_threshold = curr_threshold * 0.8
+        elif width >= 1920 and height >= 1080:
+            curr_threshold = curr_threshold * 0.6
+        else:
+            curr_threshold = curr_threshold * 0.4
+            
+        if curr_threshold < 1: curr_threshold = 1
+        print(f"downgraded threshold {curr_threshold}")
+        return int(curr_threshold)
+
     def mask_unmatched_space(self, original_img, dst):
+        # Fill the ROI into the mask
         mask = np.zeros_like(original_img)
-        # fill the ROI into the mask
         cv2.fillPoly(mask, [np.int32(dst)], (255, 255, 255))
-        # performing bitwise and operation with mask image
+        
+        # Performing bitwise and operation with mask image
         result = cv2.bitwise_and(original_img, mask)
         return result
 
-if __name__ == "__main__":
-    import os
-    image_detector = StarRailImageMatcher()
 
-    TEMPLATE                    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "template.PNG")
-    ORIGINAL                    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original.PNG")
-    ORIGINAL_2                  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-2.png")
-    ORIGINAL_ORIENTED           = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-oriented.jpg")
-    ORIGINAL_COMPRESSED         = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-compressed.jpg")
-    ORIGINAL_DOUBLE_COMPRESSED  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-double-compressed.jpg")
+# if __name__ == "__main__":
+#     import os
+#     image_detector = StarRailImageMatcher()
 
-    SC_with_box, M, center = image_detector.match_image(TEMPLATE, ORIGINAL, visualize_match=True, override_threshold=25)
+#     TEMPLATE                    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "template.PNG")
+#     ORIGINAL                    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original.PNG")
+#     ORIGINAL_2                  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-2.png")
+#     ORIGINAL_ORIENTED           = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-oriented.jpg")
+#     ORIGINAL_COMPRESSED         = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-compressed.jpg")
+#     ORIGINAL_DOUBLE_COMPRESSED  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp_data", "original-double-compressed.jpg")
 
-    if M is not None:
-        cv2.imshow("visualization with Box", SC_with_box)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+#     SC_with_box, M, center = image_detector.match_image(TEMPLATE, ORIGINAL, visualize_match=True, override_threshold=25)
+
+#     if M is not None:
+#         cv2.imshow("visualization with Box", SC_with_box)
+#         cv2.waitKey(0)
+#         cv2.destroyAllWindows()

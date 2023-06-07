@@ -25,6 +25,7 @@ import os
 import sys
 import time
 import cv2
+import traceback
 
 from .._exceptions._exceptions import *
 from .._config.config_handler import ConfigHandler
@@ -154,102 +155,11 @@ class StarRailLogicController:
                     return True
     
         except Exception as ex:
+            traceback.print_exc()
             print(ex.args); sys.stdout.flush(); time.sleep(10)
             
         return False
     
-    # def run_logic_map(self, logic_map: dict):
-    #     from elevate import elevate; elevate() # Elevate permission to move mouse in-game
-    #     assert(isinstance(logic_map, dict))
-
-    #     try:            
-    #         for process_header, process_meta in logic_map.items():
-    #             process_count, process_type, process_name = process_header.split()
-    #             print(process_count, process_type, process_name)
-                
-    #             if process_meta == None:
-    #                 pass # Ignore process_meta that are None
-    #             else:
-    #                 template_path           = process_meta['path']
-    #                 match_offset            = process_meta['offset'] # Mouse position correction (x, y) from the center
-    #                 ml_override_value       = process_meta['match_override_val']
-    #                 secondary_template_path = process_meta['secondary_path']
-                
-                
-    #             # ==========================================
-    #             # ==========| PROCESS EXECUTION |===========
-    #             # ==========================================
-    #             if process_type == "[execute]":
-    #                 executed_base_process = self.execute_process(process_name)
-    #                 if executed_base_process: # Process executed successfully
-    #                     continue
-    #                 else:
-    #                     raise StarRailBaseException(f"Attempted to execute a process that is not found. {process_name}")
-                
-                
-    #             # ============================================
-    #             # ==========| SCREEN VERIFICATION |===========
-    #             # ============================================
-    #             elif process_type == "[verify]":
-    #                 verified = self.verify_screen(template_path=template_path, timeout=120, ml_match_override=ml_override_value)
-    #                 if verified == False:
-    #                     starrail_log(f"Screen verification failed {process_type} {process_name}", log_type="error")
-    #                     time.sleep(3)
-                        
-    #                     self.return_to_base_menu_screen()
-    #                     return False
-    #                     # raise StarRailBaseException(f"Screen verification failed. Process: {process_header}")
-    #                 continue # Screen verification success
-                
-                
-    #             # ===========================================
-    #             # ==========| CLICK KEYBOARD KEY |===========
-    #             # ===========================================
-    #             elif process_type == "[keyboard]":
-    #                 self.click_keyboard_key(process_name)
-                
-                
-    #             # ==========================================
-    #             # =======| SIMULATE MOUSE MOVEMENT |========
-    #             # ==========================================
-    #             elif process_type == "[mouse]":
-                    
-    #                 while True:
-    #                     # Take Screenshot
-    #                     self.screenshot_controller.take_screenshot()
-                        
-    #                     # Match Image
-    #                     screenshot_abspath = self.screenshot_controller.get_screenshot_path()
-    #                     visualization, M, coords = self.image_matcher.match_image(
-    #                         template_path, 
-    #                         screenshot_abspath, 
-    #                         visualize_match=False, 
-    #                         override_threshold=ml_override_value,
-    #                         secondary_template=secondary_template_path
-    #                     )
-                        
-    #                     if coords != None: # Found match
-    #                         self.mouse_controller.move_mouse_to_button(coords, correction_x=match_offset[0], correction_y=match_offset[1])
-    #                         self.mouse_controller.click_mouse()
-    #                         self.mouse_controller.move_mouse_to_button((0, 0), duration=0.1)
-    #                         break
-    #                     else:
-    #                         continue # Continues to match
-                        
-                        
-    #             # ==========================================
-    #             # ============| END LOGIC MAP |=============
-    #             # ==========================================
-    #             elif process_type == "[end]":
-    #                 starrail_log("End of current process map.")
-    #                 time.sleep(5)
-    #                 return True
-                
-    #     except Exception as ex:
-    #         print(ex.args); sys.stdout.flush(); time.sleep(10)
-            
-    #     return False
-
 
     # =========================================
     # ======| HELPER LOGIC FUNCTIONS | ========
@@ -288,6 +198,12 @@ class StarRailLogicController:
             self.game_instance.run()
             time.sleep(10)
             return True
+        
+        elif process_name == "end_game":
+            starrail_log("Ending game...")
+            self.game_instance.terminate(force_terminate=True)
+            return True
+        
         return False
         
         

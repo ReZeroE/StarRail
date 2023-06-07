@@ -27,7 +27,7 @@ import time
 from copy import deepcopy
 
 from .calyx_name_map import CALYX_GOLDEN_NAME_MAP, CALYX_CRIMSON_NAME_MAP
-from ..logic_maps import ACCESS_CALYX_GOLDEN_PROCESS_MAP, CALYX_CRIMSON_PROCESS_MAP, RUN_CALYX_PROCESS_MAP, LOOP_CALYX_PROCESS_MAP, MouseProcess, ScreenVerificationProcess
+from ..logic_maps import ACCESS_CALYX_GOLDEN_PROCESS_MAP, ACCESS_CALYX_CRIMSON_PROCESS_MAP, RUN_CALYX_PROCESS_MAP, LOOP_CALYX_PROCESS_MAP, MouseProcess, ScreenVerificationProcess
 from ..base_logic import StarRailLogicController
 
 class StarRailGrindController:

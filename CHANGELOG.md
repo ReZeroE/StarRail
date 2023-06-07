@@ -1,4 +1,9 @@
 # Change Log
+### Version 0.0.3 - [6/7/2023]
+1. Optimized `starrail configure` to use multiprocessing Managers (speedup in local game search). 
+2. Added feature to downscale screen feature matching threshold based on the native screen resolution.
+    - Enabled `starrail` to support 4K, 2K, 1080P or lower resolution screens.
+3. Added logout feature. 
 
 ### Version 0.0.3 - [6/4/2023]
 1. Added new rewards logic maps (Daily Training, Assignments)

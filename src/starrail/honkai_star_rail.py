@@ -56,7 +56,14 @@ class HonkaiStarRail:
         return False
     
     
-    def terminate(self) -> bool:
+    def terminate(self, force_terminate=False) -> bool:
+        if force_terminate:
+            for proc in psutil.process_iter(['pid', 'name']):
+                if proc.info['name'] == GAME_DEFAULT:
+                    proc.terminate()
+                    return True
+            return False
+        
         if self.process.is_running:
             self.process.terminate()
             self.process.wait()
