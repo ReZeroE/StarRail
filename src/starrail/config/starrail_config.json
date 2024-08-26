@@ -1,0 +1,10 @@
+{
+    "instance": {
+        "pid": 33904
+    },
+    "static": {
+        "root_path": "E:\\Star Rail",
+        "game_path": "E:\\Star Rail\\Game\\StarRail.exe",
+        "disclaimer": true
+    }
+}

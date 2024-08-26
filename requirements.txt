@@ -1,10 +1,6 @@
 tabulate
 termcolor
 pytest
-colorama
 psutil
-customtkinter
-opencv-python
-numpy
-pyautogui
 pynput
+pyautogui

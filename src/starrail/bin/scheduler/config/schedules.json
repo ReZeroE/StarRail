@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "op_type": "Start Game",
+        "interval": 1,
+        "unit": "days",
+        "next_run": "2024-08-01 10:30:00",
+        "last_run": "None"
+    },
+    {
+        "id": 2,
+        "op_type": "Stop Game",
+        "interval": 1,
+        "unit": "days",
+        "next_run": "2024-08-01 15:30:00",
+        "last_run": "None"
+    }
+]

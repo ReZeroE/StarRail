@@ -1,4 +1,50 @@
 # Change Log
+
+### Version 1.0.0 - [8/1/2024]
+1. Complete redesign of the entire project.
+    - [Package Info](https://github.com/ReZeroE/StarRail/wiki/3.-Package-Information)
+        - About Package
+        - Version
+        - Author
+        - Repository
+
+    - [CLI Launcher & Scheduler](https://github.com/ReZeroE/StarRail/wiki/4.-CLI-Launcher-&-Scheduler)
+        - Start Game
+        - Stop Game
+        - Schedule Start/Stop
+
+    - [Game Configuration](https://github.com/ReZeroE/StarRail/wiki/5.-Game-Configurations)
+        - Real-time Game Status
+        - Base Game Information
+        - Detailed Client Information
+
+    - [Simple Automation](https://github.com/ReZeroE/StarRail/wiki/6.-Simple-Automation)
+        - Custom Automation
+        - Uniform Clicks
+
+    - [Official Page Access](https://github.com/ReZeroE/StarRail/wiki/7.-Official-Page-Access)
+        - Official Homepage
+        - Official Youtube Page
+        - Official HoyoLab Page
+
+    - [Binary Utilities](https://github.com/ReZeroE/StarRail/wiki/8.-Binary-Utilities)
+        - Decoded Web Cache (events, pulls, announcements)
+        - Cached Pull History
+        - Supplementary Binary Decoder
+
+    - [Misc Utilities](https://github.com/ReZeroE/StarRail/wiki/9.-Misc-Utilities)
+        - View Screenshots
+        - View Game Logs
+
+
+<br/>
+
+***
+
+<br/>
+
+## Legacy Version Logs
+
 ### Version 0.0.3 - [6/7/2023]
 1. Optimized `starrail configure` to use multiprocessing Managers (speedup in local game search). 
 2. Added feature to downscale screen feature matching threshold based on the native screen resolution.

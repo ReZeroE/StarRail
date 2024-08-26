@@ -1,0 +1,40 @@
+=====================================================================
+================== | STARRAIL PACKAGE DISCLAIMER | ==================
+=====================================================================
+
+The "starrail" Python 3 module is an external CLI tool designed 
+to automate the gameplay of Honkai Star Rail. It is designed solely 
+interacts with the game through the existing user interface, and it 
+abides by the Fair Gaming Declaration set forth by COGNOSPHERE PTE. 
+LTD. The package is designed to provide a streamlined and efficient 
+way for users to interact with the game through features already 
+provided within the game, and it does not, in any way, intend
+to damage the balance of the game or provide any unfair advantages.
+The package does NOT modify any files in any way.
+
+The creator(s) of this package has no relationship with MiHoYo, the
+game's developer. The use of this package is entirely at the user's
+own risk, and the creator accepts no responsibility for any damage or
+loss caused by the package's use. It is the user's responsibility to
+ensure that they use the package according to Honkai Star Rail's Fair
+Gaming Declaration, and the creator accepts no responsibility for any
+consequences resulting from its misuse, including game account
+penalties, suspension, or bans.
+
+Please note that according to MiHoYo's Honkai: Star Rail Fair Gaming
+Declaration (https://hsr.hoyoverse.com/en-us/news/111244):
+
+    "It is strictly forbidden to use external plug-ins, game
+    accelerators/boosters, scripts, or any other third-party tools
+    that damage the balance of the game. Once discovered, COGNOSPHERE
+    PTE. LTD. (referred to as "we" henceforth) will take appropriate
+    actions depending on the severity and frequency of the offenses.
+    These actions include removing rewards obtained through such
+    infringements, suspending the game account, or permanently
+    banning the game account. Therefore, the user of this package
+    must be aware that the use of this package may result in the
+    above actions being taken against their game account by MiHoYo."
+
+By using this package, the user agrees to ALL terms and conditions
+and acknowledges that the creator will not be held liable for any
+negative outcomes that may occur as a result of its use.
