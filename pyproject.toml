@@ -1,16 +1,12 @@
 [build-system]
 requires = [
     "setuptools>=42",
-    "termcolor",
     "tabulate",
+    "termcolor",
     "pytest",
-    "colorama",
     "psutil",
-    "customtkinter",
-    "opencv-python",
-    "numpy",
-    "pyautogui",
     "pynput",
+    "pyautogui",
     "wheel"
 ]
 build-backend = "setuptools.build_meta"

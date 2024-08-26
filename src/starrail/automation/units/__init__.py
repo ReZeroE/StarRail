@@ -1,9 +1,3 @@
-"""
-StarRail
-=====
-Honkai: Star Rail CLI Toolkit
-"""
-
 # SPDX-License-Identifier: MIT
 # MIT License
 #
@@ -26,10 +20,3 @@ Honkai: Star Rail CLI Toolkit
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-from starrail.constants import AUTHOR, VERSION, COMMAND, GAME_NAME
-
-__author__  = AUTHOR
-__version__ = VERSION
-__support__ = GAME_NAME
-__all__     = [COMMAND]

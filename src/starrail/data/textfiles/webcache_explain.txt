@@ -1,0 +1,3 @@
+Web cache for Honkai: Star Rail stores recent web data. 
+You can open URLs to view announcements, events, or pull status, 
+    allowing quick access without loading into the game.
