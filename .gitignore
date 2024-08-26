@@ -1,3 +1,6 @@
+# Ignore existing configs
+src/starrail/config/starrail_config.json
+
 # Local Screenshots
 src/starrail/_data/images/screenshots/*.png
 
