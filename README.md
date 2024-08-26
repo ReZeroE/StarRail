@@ -45,7 +45,7 @@ The `starrail` package is a CLI (command-line interface) tool designed for manag
 > [!NOTE]  
 > **Installation Requirements**
 >  - Windows 10 or later
->  - Python 3.6 or later
+>  - Python 3.7 or later
 >  - Official Honkai: Star Rail Installation
 
 <br/>
