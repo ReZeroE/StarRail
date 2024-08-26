@@ -36,6 +36,9 @@
         - View Screenshots
         - View Game Logs
 
+<br/>
+
+Please view the [developer's note](https://github.com/ReZeroE/StarRail/wiki/99.-Developer's-Note) for more information regarding the project overhaul.
 
 <br/>
 
