@@ -286,9 +286,8 @@ def print_disclaimer():
 
 def print_webcache_explanation():
     print(Printer.to_lightred("\n   What is Web Cache?"))
-    print(f"{Printer.to_lightred(" > ") + "Web cache for Honkai: Star Rail stores recent web data."}")
-    print(f"{Printer.to_lightred(" > ") + "You can open URLs to view announcements, events, or pull status, allowing quick access without loading into the game.\n"}")
-    
+    print(f"{Printer.to_lightred(' > ') + 'Web cache for Honkai: Star Rail stores recent web data.'}")
+    print(f"{Printer.to_lightred(' > ') + 'You can open URLs to view announcements, events, or pull status, allowing quick access without loading into the game.'}\n")
     
 
 

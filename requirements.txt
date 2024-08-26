@@ -4,3 +4,7 @@ pytest
 psutil
 pynput
 pyautogui
+pywin32
+screeninfo
+schedule
+pyreadline3

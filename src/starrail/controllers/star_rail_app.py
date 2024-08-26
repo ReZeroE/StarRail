@@ -72,7 +72,7 @@ class HonkaiStarRail:
             aprint("Honkai: Star Rail terminated successfully.")
             return True
         
-        aprint(f"Honkai: Star Rail is currently {Printer.to_lightred("not running")}.      ")
+        aprint(f"Honkai: Star Rail is currently {Printer.to_lightred('not running')}.      ")
         return False
 
     def schedule(self):
@@ -165,7 +165,7 @@ class HonkaiStarRail:
         
         ctime = sr_proc.create_time()
         time_delta = datetime.now() - DatetimeHandler.epoch_to_datetime(ctime)    
-        aprint(f"{Printer.to_lightblue("Session Time:")} {DatetimeHandler.seconds_to_time_str(time_delta.seconds)}")
+        aprint(f"{Printer.to_lightblue('Session Time:')} {DatetimeHandler.seconds_to_time_str(time_delta.seconds)}")
 
 
     # =============================================
@@ -213,7 +213,7 @@ class HonkaiStarRail:
     
     def __print_cached_urls(self, url_list):
         for idx, url in enumerate(url_list):
-            print(f"[{Printer.to_lightpurple(f"URL {idx+1}")}] " + url)
+            print(f"[{Printer.to_lightpurple(f'URL {idx+1}')}] " + url)
 
 
 

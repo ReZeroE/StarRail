@@ -68,7 +68,7 @@ Please review the CHANGELOG for the latest project updates and the [developer's 
 
 **STEP 1 - To Install** the `starrail` package, run with **admin permissions**:
 ```shell
-> pip install starrail==1.0.0
+> pip install starrail==1.0.1
 
 OR
 
