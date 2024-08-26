@@ -94,11 +94,11 @@ class StarRailAutomationController:
                 aprint(f"Invalid input. No sequence with ID {user_input_id}.")
                 raise SRExit()
     
-        aprint(f"Run automation '{sequence.sequence_name}' ({Printer.to_lightgrey(f"approximately {sequence.get_runtime()} seconds")})? [y/n] ", end="")
+        aprint(f"Run automation '{sequence.sequence_name}' ({Printer.to_lightgrey(f'approximately {sequence.get_runtime()} seconds')})? [y/n] ", end="")
         user_input = input("").strip().lower()
         if user_input != "y": return
         
-        aprint(f"Automation run ready start.\n{Printer.to_lightblue(" - To start")}: Focus on the game and the automation will automatically start.")
+        aprint(f"Automation run ready start.\n{Printer.to_lightblue(' - To start')}: Focus on the game and the automation will automatically start.")
         while True:
             if self.starrail.is_focused():
                 time.sleep(1)
@@ -127,7 +127,7 @@ class StarRailAutomationController:
         # Initialize empty automation sequence for storing recording
         NEW_SEQUENCE_NAME = self.__reformat_sequence_name(sequence_name)
         if self.__sequence_already_exist(NEW_SEQUENCE_NAME):
-            aprint(f"Sequence with name '{NEW_SEQUENCE_NAME}' {Printer.to_lightred("already exist")}.")
+            aprint(f"Sequence with name '{NEW_SEQUENCE_NAME}' {Printer.to_lightred('already exist')}.")
             raise SRExit()
         
         recording_sequence = AutomationSequence(NEW_SEQUENCE_NAME)                  
@@ -152,7 +152,7 @@ class StarRailAutomationController:
         sequence_id = self.get_next_sequence_id()
         self.automation_sequences[sequence_id] = recording_sequence
 
-        aprint(f"Recording complete. Saved as '{Printer.to_light_blue(recording_sequence.sequence_name)}' (ID {sequence_id}).\n{Printer.to_lightblue(" - To view")}: {color_cmd("automation show")}\n{Printer.to_lightblue(" - To run")}:  {color_cmd(f"automation run")}")
+        aprint(f"Recording complete. Saved as '{Printer.to_light_blue(recording_sequence.sequence_name)}' (ID {sequence_id}).\n{Printer.to_lightblue(' - To view')}: {color_cmd('automation show')}\n{Printer.to_lightblue(' - To run')}:  {color_cmd(f'automation run')}")
         return recording_sequence
     
     def delete_sequence(self):

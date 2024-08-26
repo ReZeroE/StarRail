@@ -1,4 +1,3 @@
-
 import readline
 import argparse
 import getpass
@@ -94,7 +93,7 @@ class StarRailEntryPointHandler:
     def schedule(self, args):
         
         def verbose_add_usage():
-            aprint(f"To schedule a new game start, run:\n{color_cmd("starrail schedule add --action start --time 10:30", True)}")
+            aprint(f"To schedule a new game start, run:\n{color_cmd('starrail schedule add --action start --time 10:30', True)}")
         
         def verbose_general_usage():
             headers = [Printer.to_lightpurple(title) for title in ["Example Command", "Description"]]
@@ -139,7 +138,7 @@ class StarRailEntryPointHandler:
             verbose_general_usage()
 
         else:
-            aprint(f"{Printer.to_lightred("Error: expecting subcommand.")} See below for exmaple usage.")
+            aprint(f"{Printer.to_lightred('Error: expecting subcommand.')} See below for exmaple usage.")
             verbose_general_usage()
         
         
@@ -151,7 +150,7 @@ class StarRailEntryPointHandler:
         
         def force_admin():
             if not is_admin():
-                aprint(f"{Printer.to_lightred("Admin permission required for automation")}.\nWould you like to elevate the permissions to admin? [y/n] ", end="")
+                aprint(f"{Printer.to_lightred('Admin permission required for automation')}.\nWould you like to elevate the permissions to admin? [y/n] ", end="")
                 if input("").strip().lower() == "y":
                     StarRailPermissionsHandler.elevate()
                     raise SRExit()
@@ -181,7 +180,7 @@ class StarRailEntryPointHandler:
     def click_continuously(self, args):
         def force_admin(args):
             if not is_admin():
-                aprint(f"{Printer.to_lightblue("Admin permission required for clicks to be registered in-game")}.\nWould you like to elevate the permissions to admin? [y/n] ", end="")
+                aprint(f"{Printer.to_lightblue('Admin permission required for clicks to be registered in-game')}.\nWould you like to elevate the permissions to admin? [y/n] ", end="")
                 if input("").strip().lower() == "y":
                     StarRailPermissionsHandler.elevate([
                         "click",
@@ -259,9 +258,9 @@ class StarRailEntryPointHandler:
         if self.star_rail.config.disclaimer_configured() == False:
             # print(Printer.to_skyblue("\n\n - STEP 1 OF 2. DISCLAIMER AGREEMENT - \n"))
             step_two_text = " - STEP 1 OF 2. DISCLAIMER AGREEMENT - "
-            print(Printer.to_skyblue(f"\n\n {"="*len(step_two_text)}"))
+            print(Printer.to_skyblue(f"\n\n {'='*len(step_two_text)}"))
             print(Printer.to_skyblue(f" {step_two_text}"))
-            print(Printer.to_skyblue(f" {"="*len(step_two_text)}\n"))
+            print(Printer.to_skyblue(f" {'='*len(step_two_text)}\n"))
             print_disclaimer()
             
             print(Printer.to_lightred("[IMPORTANT] Please read the disclaimer above before continuing!"))
@@ -273,9 +272,9 @@ class StarRailEntryPointHandler:
         
         if self.star_rail.config.path_configured() == False:
             step_two_text = "- STEP 2 OF 2. SET UP GAME PATH (StarRail.exe) -"
-            print(Printer.to_skyblue(f"\n\n {"="*len(step_two_text)}"))
+            print(Printer.to_skyblue(f"\n\n {'='*len(step_two_text)}"))
             print(Printer.to_skyblue(f" {step_two_text}"))
-            print(Printer.to_skyblue(f" {"="*len(step_two_text)}\n"))
+            print(Printer.to_skyblue(f" {'='*len(step_two_text)}\n"))
             
             logt = "Auto Detecting Honkai: Star Rail (this may take a while)..."
             with Loader(logt, end=None):

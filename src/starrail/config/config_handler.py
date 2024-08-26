@@ -28,6 +28,9 @@ from starrail.exceptions.exceptions import *
 from starrail.utils.json_handler import JSONConfigHandler
 from pathlib import Path
 
+# TODO: Config is only loaded the first time when the StarRailConfig is initialized. This is an issue
+# when the module is configured in the CLI since the loaded configuration persists in the CLI.
+
 class StarRailConfig(JSONConfigHandler):
     def __init__(self):
         __starrail_config =  os.path.join(os.path.abspath(os.path.dirname(__file__)), "starrail_config.json")

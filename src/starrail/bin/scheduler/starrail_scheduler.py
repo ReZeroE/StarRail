@@ -29,7 +29,7 @@ class StartRailJob:
         self.next_run   = job.next_run
 
     def __str__(self):
-        return f"[{Printer.to_lightpurple("JOB")}] {self.op_type} Game - Next run: {self.next_run}, Last run: {self.last_run}"
+        return f"[{Printer.to_lightpurple('JOB')}] {self.op_type} Game - Next run: {self.next_run}, Last run: {self.last_run}"
     
     def print_job(self):
         print(self.__str__())
@@ -112,7 +112,7 @@ class StarRailScheduler:
         # If scheduled job already exist at the new job time
         for job_id, job in self.jobs.items():
             if job.next_run.strftime(TIME_FORMAT) == parsed_time:
-                aprint(f"{Printer.to_lightred(f"Job (ID {job_id}) is already scheduled at time {parsed_time}.")}")
+                aprint(f"{Printer.to_lightred(f'Job (ID {job_id}) is already scheduled at time {parsed_time}.')}")
                 return
         
         if operation_type == OperationTypes.START:
@@ -132,7 +132,7 @@ class StarRailScheduler:
 
     def remove_schedule(self):
         self.show_schedules()
-        aprint(f"Which job would you like to remove? [ID 1{'-' + str(len(self.jobs)) if len(self.jobs) > 1 else ""}] ", end="")
+        aprint(f"Which job would you like to remove? [ID 1{'-' + str(len(self.jobs)) if len(self.jobs) > 1 else ''}] ", end="")
         user_input_id = input("")
         job_id = self.__parse_id(user_input_id)
         sr_job: StartRailJob = self.__get_job_with_id(job_id)

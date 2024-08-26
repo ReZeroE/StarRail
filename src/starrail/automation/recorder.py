@@ -115,7 +115,7 @@ class AutomationRecorder():
         if start_on_callback:
             self.is_recording = True
             self.prev_action_time = None
-            aprint(f"Ready to record.\n{Printer.to_lightblue(" - To start")}: Focus onto the game and the recording will automatically start.\n{Printer.to_lightblue(" - To stop")}:  Click 'Stop Recording' on the top-left corner of the screen.")
+            aprint(f"Ready to record.\n{Printer.to_lightblue(' - To start')}: Focus onto the game and the recording will automatically start.\n{Printer.to_lightblue(' - To stop')}:  Click 'Stop Recording' on the top-left corner of the screen.")
         else:
             raise Exception("Record must start on callback. Other case not implemented.")
         

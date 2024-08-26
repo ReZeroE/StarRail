@@ -26,7 +26,7 @@ class AutomationSequence:
         self.global_delay                   = 0
     
     
-    def __progress_bar(self, actions: list[Action], prefix="", size=40, out=sys.stdout):
+    def __progress_bar(self, actions: list, prefix="", size=40, out=sys.stdout):
         count = len(actions)
         start = time.time() # time estimate start
         total_time = self.get_runtime()
