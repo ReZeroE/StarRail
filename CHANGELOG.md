@@ -1,5 +1,16 @@
 # Change Log
 
+### Version 1.0.2 - [8/27/2024]
+- Resolved issue with auto-detecting the game's executable's path.
+    - New HoyoPlay launcher introduced a new game directory structure that broke old game detecting system. Package now matches:
+        1. `.../Star Rail/Game/StarRail.exe`
+        2. `.../Star Rail Games/StarRail.exe`
+    - Implemented new "weak match" feature to future-proof another change in game directory structure. 
+    - Added new error message if package is unable to locate the game.
+
+### Version 1.0.1 - [8/26/2024]
+- Resolved version support issues (now supports Python 3.7 and later).
+
 ### Version 1.0.0 - [8/1/2024]
 1. Complete redesign of the entire project.
     - [Package Info](https://github.com/ReZeroE/StarRail/wiki/3.-Package-Information)
