@@ -5,7 +5,7 @@ import webbrowser
 import tabulate
 import subprocess
 
-from starrail.constants import BASENAME, AUTHOR, VERSION, VERSION_DESC, AUTHOR_DETAIL, REPOSITORY, CURSOR_UP_ANSI, REPOSITORY, STARRAIL_DIRECTORY
+from starrail.constants import BASENAME, AUTHOR, VERSION, VERSION_DESC, AUTHOR_DETAIL, REPOSITORY, CURSOR_UP_ANSI, REPOSITORY, STARRAIL_DIRECTORY, ISSUES
 from starrail.utils.utils import *
 from starrail.utils.binary_decoder import  StarRailBinaryDecoder
 from starrail.utils.game_detector import StarRailGameDetector
@@ -276,11 +276,16 @@ class StarRailEntryPointHandler:
             print(Printer.to_skyblue(f" {step_two_text}"))
             print(Printer.to_skyblue(f" {'='*len(step_two_text)}\n"))
             
-            logt = "Auto Detecting Honkai: Star Rail (this may take a while)..."
+            logt = f"Auto Detecting Honkai: Star Rail ({Printer.to_lightgrey('this may take a while')})..."
             with Loader(logt, end=None):
                 star_rail_game_detector = StarRailGameDetector()
                 game_path = star_rail_game_detector.find_game()
                 
+                if game_path == None:
+                    print(CURSOR_UP_ANSI, flush=True)
+                    aprint(Printer.to_lightred("Cannot locate game Honkai: Star Rail.") + " "*15 + f"\nFile issue at '{ISSUES}' for more help.")
+                    raise SRExit()
+
                 self.star_rail.config.set_path(game_path)
                 self.star_rail.config.save_current_config()
 
