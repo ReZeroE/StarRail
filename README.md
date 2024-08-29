@@ -72,7 +72,7 @@ Please review the CHANGELOG for the latest project updates and the [developer's 
 
 **STEP 1 - To Install** the `starrail` package, run with **admin permissions**:
 ```shell
-> pip install starrail==1.0.3
+> pip install starrail==1.0.4
 
 OR
 
@@ -360,7 +360,8 @@ Example Command             Description
 starrail automation record  Create and record a new automation sequence (macros)
 starrail automation show    List all recorded automation sequences
 starrail automation run     Run a recorded automation sequence
-starrail automation remove  Delete a recorded automated sequence
+starrail automation remove  Delete a recorded automation sequence
+starrail automation clear   Delete all recorded automation sequences
 ```
 > [!NOTE]
 > **For a full documentation / guide on custom automation**, visit [this page](https://github.com/ReZeroE/StarRail/wiki/6.-Simple-Automation). 

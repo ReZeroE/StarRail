@@ -133,6 +133,7 @@ class StarRailScheduler:
     def remove_schedule(self):
         if len(self.jobs) == 0:
             aprint("No scheduled job to remove.")
+            return
 
         self.show_schedules()
         aprint(f"Which job would you like to remove? [ID 1{'-' + str(len(self.jobs)) if len(self.jobs) > 1 else ''}] ", end="")
@@ -159,10 +160,6 @@ class StarRailScheduler:
         aprint(f"Job (ID {job_id}) removed successfully.")
 
     def show_schedules(self):
-        if len(self.jobs) == 0:
-            aprint(f"No scheduled jobs to show.\nRun {color_cmd('schedule help', True)} for example usages.")
-            return
-        
         headers = ["ID", "Type", "Action", "Next Run", "Last Run"]
         headers = [Printer.to_lightpurple(title) for title in headers]
         payload = []
