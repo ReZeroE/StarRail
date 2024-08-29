@@ -156,6 +156,10 @@ class StarRailAutomationController:
         return recording_sequence
     
     def delete_sequence(self):
+        if len(self.automation_sequences) == 0:
+            aprint("No automation sequence has been recorded.")
+            raise SRExit()
+
         self.show_sequences()
         aprint(f"Which sequence would you like to delete? ({self.get_range_string()}) ", end="")
         user_input_id = input("")
@@ -171,6 +175,10 @@ class StarRailAutomationController:
         aprint(f"Automation sequence `{sequence.sequence_name}` has been deleted.")
         
     def clear_sequences(self):
+        if len(self.automation_sequences) == 0:
+            aprint("No automation sequence has been recorded.")
+            raise SRExit()
+
         self.show_sequences()
         aprint(f"Are you sure you would like to clear all {len(self.automation_sequences)} automation sequences? [y/n] ", end="")
         user_input = input("").strip().lower()
