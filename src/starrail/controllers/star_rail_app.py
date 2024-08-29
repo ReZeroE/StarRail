@@ -136,12 +136,22 @@ class HonkaiStarRail:
     def screenshots(self):
         aprint("Opening the screenshots directory...", end="\r")
         screenshot_path = self.__get_screenshot_path()
+
+        if not os.path.isdir(screenshot_path):
+            aprint(f"No screenshots taken.{" "*20}")
+            return
+
         os.startfile(screenshot_path)
         aprint(f"Screenshots directory opened in the File Explorer ({Printer.to_lightgrey(screenshot_path)}).")
 
     def logs(self):
         aprint("Opening the logs directory...", end="\r")
         logs_path = self.__get_log_path()
+        
+        if not os.path.isdir(logs_path):
+            aprint("No logs directory available locally.")
+            return
+
         os.startfile(logs_path)
         aprint(f"Logs directory opened in the File Explorer ({Printer.to_lightgrey(logs_path)}).")
 
@@ -194,8 +204,10 @@ class HonkaiStarRail:
         e_cache_urls = self.webcache_controller.get_events_cache()
         a_cache_urls = self.webcache_controller.get_announcements_cache()
 
-        if e_cache_urls == None and a_cache_urls == None:
+        if e_cache_urls == None or len(e_cache_urls) == 0 and \
+            a_cache_urls == None or len(a_cache_urls) == 0:
             aprint("No available webcache found.")
+            return
         else:
             print("")
 
@@ -214,7 +226,6 @@ class HonkaiStarRail:
     def __print_cached_urls(self, url_list):
         for idx, url in enumerate(url_list):
             print(f"[{Printer.to_lightpurple(f'URL {idx+1}')}] " + url)
-
 
 
     # =================================================
@@ -246,20 +257,30 @@ class HonkaiStarRail:
     # =============================================
     # =========| PATH HELPER FUNCTIONS | ==========
     # =============================================
-    
+
     def __get_screenshot_path(self):
-        return os.path.normpath(os.path.join(self.config.root_path, "Game", "StarRail_Data", "ScreenShots"))
+        return os.path.normpath(os.path.join(self.config.innr_path, "StarRail_Data", "ScreenShots"))
 
     def __get_log_path(self):
-        return os.path.normpath(os.path.join(self.config.root_path, "logs"))
+        return os.path.normpath(os.path.join(self.config.innr_path, "logs"))
 
     def __get_game_config_path(self):
-        return os.path.normpath(os.path.join(self.config.root_path, "Game", "config.ini"))
+        return os.path.normpath(os.path.join(self.config.innr_path, "config.ini"))
     
     def fetch_game_version(self):
         config = configparser.ConfigParser()
         config.read(self.__get_game_config_path())
-        game_version = config.get('General', 'game_version')
+        
+        game_version = "N/A"
+
+        try:
+            game_version = config.get('general', 'game_version')
+        except configparser.NoSectionError:
+            try:
+                game_version = config.get('General', 'game_version')
+            except configparser.NoSectionError:
+                pass
+
         return game_version
     
     

@@ -1,0 +1,88 @@
+{
+    "metadata": {
+        "sequence_name": "tesst",
+        "date_created": "2024-08-29 12:40:59",
+        "monitor_info": {
+            "width": 2560,
+            "height": 1600
+        },
+        "other_data": null
+    },
+    "actions_sequence": [
+        {
+            "coordinate": {
+                "x": 1045,
+                "y": 1253
+            },
+            "delay": 0.0,
+            "click": true,
+            "window_info": {
+                "left": 0,
+                "top": 0,
+                "width": 2560,
+                "height": 1600,
+                "is_fullscreen": false
+            }
+        },
+        {
+            "coordinate": {
+                "x": 1204,
+                "y": 1266
+            },
+            "delay": 0.2228384017944336,
+            "click": true,
+            "window_info": {
+                "left": 0,
+                "top": 0,
+                "width": 2560,
+                "height": 1600,
+                "is_fullscreen": false
+            }
+        },
+        {
+            "coordinate": {
+                "x": 1277,
+                "y": 1236
+            },
+            "delay": 0.19100213050842285,
+            "click": true,
+            "window_info": {
+                "left": 0,
+                "top": 0,
+                "width": 2560,
+                "height": 1600,
+                "is_fullscreen": false
+            }
+        },
+        {
+            "coordinate": {
+                "x": 1297,
+                "y": 1170
+            },
+            "delay": 0.20972490310668945,
+            "click": true,
+            "window_info": {
+                "left": 0,
+                "top": 0,
+                "width": 2560,
+                "height": 1600,
+                "is_fullscreen": false
+            }
+        },
+        {
+            "coordinate": {
+                "x": 1123,
+                "y": 739
+            },
+            "delay": 0.24653029441833496,
+            "click": true,
+            "window_info": {
+                "left": 0,
+                "top": 0,
+                "width": 2560,
+                "height": 1600,
+                "is_fullscreen": false
+            }
+        }
+    ]
+}

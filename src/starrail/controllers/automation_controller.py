@@ -35,7 +35,7 @@ class StarRailAutomationController:
             [color_cmd("automation record"),    "Create and record a new automation sequence (macros)"],
             [color_cmd("automation show"),      "List all recorded automation sequences"],
             [color_cmd("automation run"),       "Run a recorded automation sequence"],
-            [color_cmd("automation delete"),    "Delete a recorded automated sequence"],
+            [color_cmd("automation remove"),    "Delete a recorded automated sequence"],
         ]
         
         tab = tabulate.tabulate(data, headers)

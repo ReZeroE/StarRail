@@ -1,10 +1,9 @@
+import os
 from setuptools import setup, find_packages
-
-# File for older version of python that can't read setup.cfg.
 
 setup(
     name="starrail",
-    version="1.0.2",
+    version="1.0.3",
     author="Kevin L.",
     author_email="kevinliu@vt.edu",
     description="Honkai: Star Rail Command Line Tool (CLI)",
@@ -24,7 +23,7 @@ setup(
     package_dir={"": "src"},
     packages=find_packages(where="src"),
     python_requires=">=3.7",
-    install_requires=open("requirements.txt").read().splitlines(),
+    install_requires=open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "requirements.txt")).read().splitlines(),
     include_package_data=True,
     entry_points={
         "console_scripts": [

@@ -30,7 +30,7 @@ import os
 BASENAME            = "StarRail CLI"
 SHORTNAME           = "StarRail"
 COMMAND             = "starrail"
-VERSION             = "1.0.2"
+VERSION             = "1.0.3"
 VERSION_DESC        = "Beta"
 DEVELOPMENT         = VERSION_DESC.lower() != "stable"
 
