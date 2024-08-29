@@ -1,5 +1,12 @@
 # Change Log
 
+### Version 1.0.3 - [8/29/2024]
+- Fixed more compatibility issues with the updated game directory structure.
+- Improved error messaging for the `starrail` scheduler and automation handler.
+- Introduced a handler to manage case when web cache binary file are locked when the game is active.
+- Updated the automation section in the README file to use `automation remove` instead of `automation delete`.
+- Various minor bug fixes and code optimizations.
+
 ### Version 1.0.2 - [8/27/2024]
 - Resolved issue with auto-detecting the game's executable's path.
     - New HoyoPlay launcher introduced a new game directory structure that broke old game detecting system. Package now matches:

@@ -2,6 +2,7 @@
 import os
 import re
 import sys
+import shutil
 from pathlib import Path
 
 from enum import Enum
@@ -48,13 +49,35 @@ class StarRailWebCacheController:
     # =============================================
     # ==========| SUBDRIVER FUNCTIONS | ===========
     # =============================================
-    
+
     def decode_webcache(self, webcache_binary_file: StarRailWebCacheBinaryFile):
-        file_path = os.path.join(self.starrail_config.root_path, "Game", "StarRail_Data", "webCaches", "2.25.0.0", "Cache", "Cache_Data", webcache_binary_file.value)
+
+        # Get webCache path (varying webcache versioning)
+        def get_webcache_path():
+            webcache_path = ""
+            webcache_semi_path = Path(os.path.join(self.starrail_config.innr_path, "StarRail_Data", "webCaches"))
+            
+            try:
+                version_dirs = [d for d in webcache_semi_path.iterdir() if d.is_dir()]
+                if len(version_dirs) > 0:
+                    version_dir = version_dirs[0]
+                    webcache_path = os.path.join(self.starrail_config.innr_path, "StarRail_Data", "webCaches", version_dir, "Cache", "Cache_Data", webcache_binary_file.value)
+                    return webcache_path
+                else:
+                    return None
+            except Exception as ex:
+                return None
+
+        file_path = get_webcache_path()
+        if file_path == None or not os.path.isfile(file_path):
+            return None
+        
         aprint(f"Decoding {webcache_binary_file.value} ({Printer.to_lightgrey(file_path)}) ...", submodule_name=SUBMODULE_NAME)
         
-        if Path(file_path).exists():
+        try:
             return self.binary_decoder.decode_raw_binary_file(file_path)
+        except PermissionError:
+            aprint(f"{Printer.to_lightred('Web cache is LOCKED.')} Web cache is only available when the game is not running.", submodule_name=SUBMODULE_NAME)
         return None
     
     

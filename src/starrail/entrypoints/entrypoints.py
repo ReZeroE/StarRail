@@ -131,7 +131,7 @@ def start_starrail():
     auto_group = parser.add_group('Automation Commands', 'Simple automation for automating Honkai: Star Rail\'s gameplay.')
     
     auto_parser = subparsers.add_parser('automation', help='', description='')
-    auto_parser.add_argument('action', nargs='?', default=None, help='record / run / show / remove')
+    auto_parser.add_argument('action', nargs='?', default=None, help='record / run / show / remove / clear')
     auto_parser.set_defaults(func=entrypoint_handler.automation)
     parser.add_parser_to_group(auto_group, auto_parser)
     

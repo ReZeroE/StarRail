@@ -45,8 +45,9 @@ class StarRailConfig(JSONConfigHandler):
         
         # Config variables
         self.instance_pid: int  = None
-        self.root_path: Path    = None
-        self.game_path: Path    = None
+        self.root_path: Path    = None  # Root as   D:\HoYoPlay\games
+        self.innr_path: Path    = None  # Inner as  D:\HoYoPlay\games\Star Rail Games or D:\HoYoPlay\games\Game
+        self.game_path: Path    = None  # Game as   D:\HoYoPlay\games\Star Rail Games\StarRail.exe
         self.disclaimer: bool   = False
         
         # Load config into attributes
@@ -54,13 +55,17 @@ class StarRailConfig(JSONConfigHandler):
             try:
                 self.instance_pid   = __raw_config["instance"]["pid"]
                 self.root_path      = __raw_config["static"]["root_path"]
+                self.innr_path      = __raw_config["static"]["innr_path"]
                 self.game_path      = __raw_config["static"]["game_path"]
                 self.disclaimer     = __raw_config["static"]["disclaimer"]
                 
                 if self.root_path != None:
                     self.root_path = Path(self.root_path)
+                if self.innr_path != None:
+                    self.innr_path = Path(self.innr_path)
                 if self.game_path != None:
                     self.game_path = Path(self.game_path)
+                
                     
             except KeyError:
                 self.__reset_config()
@@ -80,6 +85,7 @@ class StarRailConfig(JSONConfigHandler):
                 },
                 "static": {
                     "root_path": str(self.root_path),
+                    "innr_path": str(self.innr_path),
                     "game_path": str(self.game_path),
                     "disclaimer": self.disclaimer
                 }
@@ -92,9 +98,14 @@ class StarRailConfig(JSONConfigHandler):
     def path_configured(self) -> bool:
         if isinstance(self.game_path, str):
             self.game_path = Path(self.game_path)
+        if isinstance(self.innr_path, str):
+            self.innr_path = Path(self.innr_path)
+        if isinstance(self.root_path, str):
+            self.root_path = Path(self.root_path)
             
-        if isinstance(self.root_path, Path) and isinstance(self.game_path, Path):
-            return self.game_path.exists()
+        if isinstance(self.root_path, Path) and isinstance(self.game_path, Path) and isinstance(self.innr_path, Path):
+            return self.game_path.exists() and self.root_path.exists() and self.innr_path.exists()
+        
         return False
     
     def disclaimer_configured(self) -> bool:
@@ -104,12 +115,13 @@ class StarRailConfig(JSONConfigHandler):
     # ==================================================
     # ============== | HELPER FUNCTIONS | ==============
     # ==================================================
-    
+
     def set_path(self, game_path: str):
         self.game_path = Path(game_path)
+        self.innr_path = os.path.dirname(game_path)
         self.root_path = Path(os.path.dirname(os.path.dirname(game_path)))
     
-    
+
     def __reset_config(self):
         self.SAVE_CONFIG(
             {
@@ -118,12 +130,15 @@ class StarRailConfig(JSONConfigHandler):
                 },
                 "static": {
                     "root_path": None,
+                    "innr_path": None,
                     "game_path": None,
                     "disclaimer": False
                 }
             }
         )
         self.game_path = None
+        self.innr_path = None
+        self.root_path = None
         self.disclaimer = False
 
 

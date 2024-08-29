@@ -2,8 +2,6 @@
 src/starrail/config/starrail_config.json
 src/starrail/bin/scheduler/config/*.json
 
-
-
 # Local Screenshots
 src/starrail/_data/images/screenshots/*.png
 

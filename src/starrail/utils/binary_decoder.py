@@ -44,8 +44,9 @@ class StarRailBinaryDecoder:
         results = []
         try:
             results = self.decode_raw_binary_file(file_path, min_length)
-        except Exception:
-            aprint(f"File cannot be decoded.", submodule_name=SUBMODULE_NAME)
+        except Exception as ex:
+            aprint(f"File cannot be decoded ({ex}).", submodule_name=SUBMODULE_NAME)
+            return
         
         if len(results) == 0:
             aprint("No results are found.", submodule_name=SUBMODULE_NAME)

@@ -107,8 +107,13 @@ class AutomationSequence:
             elif isinstance(action, MouseAction):
                 
                 if action.is_valid_for_pixel_calc == True:
-                    new_coord = PixelCalculator.transform_coordinate(action.coordinate, action.window_info)
-                    action.coordinate = new_coord
+                    try:
+                        new_coord = PixelCalculator.transform_coordinate(action.coordinate, action.window_info)
+                        action.coordinate = new_coord
+                    except Exception as ex:
+                        # TODO: log this error
+                        # aprint(Printer.to_lightgrey(f"Warning: PixelCalc not working ({ex})"))
+                        pass
                 
                 action.execute()
                 

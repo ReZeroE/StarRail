@@ -35,7 +35,8 @@ class StarRailAutomationController:
             [color_cmd("automation record"),    "Create and record a new automation sequence (macros)"],
             [color_cmd("automation show"),      "List all recorded automation sequences"],
             [color_cmd("automation run"),       "Run a recorded automation sequence"],
-            [color_cmd("automation delete"),    "Delete a recorded automated sequence"],
+            [color_cmd("automation remove"),    "Delete a recorded automated sequence"],
+            [color_cmd("automation clear"),     "Delete all recorded automation sequences"],
         ]
         
         tab = tabulate.tabulate(data, headers)
@@ -156,6 +157,10 @@ class StarRailAutomationController:
         return recording_sequence
     
     def delete_sequence(self):
+        if len(self.automation_sequences) == 0:
+            aprint("No automation sequence has been recorded.")
+            raise SRExit()
+
         self.show_sequences()
         aprint(f"Which sequence would you like to delete? ({self.get_range_string()}) ", end="")
         user_input_id = input("")
@@ -171,6 +176,10 @@ class StarRailAutomationController:
         aprint(f"Automation sequence `{sequence.sequence_name}` has been deleted.")
         
     def clear_sequences(self):
+        if len(self.automation_sequences) == 0:
+            aprint("No automation sequence has been recorded.")
+            raise SRExit()
+
         self.show_sequences()
         aprint(f"Are you sure you would like to clear all {len(self.automation_sequences)} automation sequences? [y/n] ", end="")
         user_input = input("").strip().lower()

@@ -138,7 +138,8 @@ class StarRailEntryPointHandler:
             verbose_general_usage()
 
         else:
-            aprint(f"{Printer.to_lightred('Error: expecting subcommand.')} See below for exmaple usage.")
+            if args.subcommand != None:
+                aprint(Printer.to_lightred(f"Unknown scheduling action: '{args.subcommand}'"))
             verbose_general_usage()
         
         
@@ -175,6 +176,8 @@ class StarRailEntryPointHandler:
             self.automation_controller.clear_sequences()
 
         else:
+            if args.action != None:
+                aprint(Printer.to_lightred(f"Unknown automation action: '{args.action}'"))
             self.automation_controller.verbose_general_usage()
         
     def click_continuously(self, args):

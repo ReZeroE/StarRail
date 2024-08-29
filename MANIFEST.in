@@ -2,3 +2,5 @@ recursive-include src/starrail *.json *.png *.jpg *.jpeg *.txt *.c *.exe
 
 exclude src/starrail/config/*.json
 exclude src/starrail/bin/scheduler/config/*.json
+
+exclude src/starrail/automation/config/automation-data/*.json

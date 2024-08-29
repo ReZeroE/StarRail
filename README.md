@@ -8,8 +8,11 @@
   <img src="https://i.imgur.com/lE9hrlV.png" height="auto" alt="Centered Image"/>
 </p>
 
+![badge](https://img.shields.io/pypi/dm/starrail) ![GitHub License](https://img.shields.io/github/license/rezeroe/starrail) ![support](https://img.shields.io/badge/support-Python_3.7%2B-blue) ![size](https://img.shields.io/github/repo-size/rezeroe/starrail)
+
 
 ## Overview
+
 
 The `starrail` package is a CLI (command-line interface) tool designed for managing and interacting with the game, Honkai: Star Rail, directly from your terminal. 
 
@@ -55,6 +58,7 @@ Please review the CHANGELOG for the latest project updates and the [developer's 
 <br/>
 
 
+
 ***
 
 <br/>
@@ -68,7 +72,7 @@ Please review the CHANGELOG for the latest project updates and the [developer's 
 
 **STEP 1 - To Install** the `starrail` package, run with **admin permissions**:
 ```shell
-> pip install starrail==1.0.2
+> pip install starrail==1.0.4
 
 OR
 
@@ -356,7 +360,8 @@ Example Command             Description
 starrail automation record  Create and record a new automation sequence (macros)
 starrail automation show    List all recorded automation sequences
 starrail automation run     Run a recorded automation sequence
-starrail automation delete  Delete a recorded automated sequence
+starrail automation remove  Delete a recorded automation sequence
+starrail automation clear   Delete all recorded automation sequences
 ```
 > [!NOTE]
 > **For a full documentation / guide on custom automation**, visit [this page](https://github.com/ReZeroE/StarRail/wiki/6.-Simple-Automation). 
@@ -527,6 +532,17 @@ negative outcomes that may occur as a result of its use.
 
 <br/>
 
+## Repository Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ReZeroE/StarRail&type=Date)](https://star-history.com/#ReZeroE/StarRail&Date)
+
+
+<br/>
+
+***
+
+<br/>
+
 ## License
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/220px-MIT_logo.svg.png" align="left" width="150"/>
@@ -536,3 +552,4 @@ negative outcomes that may occur as a result of its use.
 </ul>
 
 <br clear="left"/>
+

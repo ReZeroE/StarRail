@@ -7,7 +7,7 @@ from enum import Enum
 from starrail.config.config_handler import StarRailConfig
 
 from starrail.utils.utils import aprint, Printer
-from starrail.constants import WEBCACHE_IGNORE_FILETYPES
+from starrail.constants import WEBCACHE_IGNORE_FILETYPES, GAME_FILE_PATH, GAME_FILE_PATH_NEW
 from starrail.utils.binary_decoder import StarRailBinaryDecoder
 
 
@@ -53,11 +53,17 @@ class StarRailStreamingAssetsController:
     # =============================================
     
     def decode_streaming_assets(self, sa_binary_file: StarRailStreamingAssetsBinaryFile):
-        file_path = os.path.join(self.starrail_config.root_path, "Game", "StarRail_Data", "StreamingAssets", sa_binary_file.value)
+        file_path = os.path.join(self.starrail_config.innr_path, "StarRail_Data", "StreamingAssets", sa_binary_file.value)
+        if not os.path.isfile(file_path):
+            aprint(Printer.to_lightred(f"Decoder cannot locate streaming assets file '{file_path}'."))
+            return
+        
         aprint(f"Decoding {Printer.to_lightgrey(file_path)} ...", submodule_name=SUBMODULE_NAME)
         
-        if Path(file_path).exists():
+        try:
             return self.binary_decoder.decode_raw_binary_file(file_path)
+        except PermissionError as ex:
+            aprint(f"{Printer.to_lightred('Permission denied.')}")
         return None
     
     
