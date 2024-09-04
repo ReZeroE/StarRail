@@ -1,6 +1,8 @@
 # Change Log
 
 ### Version 1.0.3 - [8/29/2024]
+
+### Version 1.0.3 - [8/29/2024]
 - Fixed more compatibility issues with the updated game directory structure.
 - Improved error messaging for the `starrail` scheduler and automation handler.
 - Introduced a handler to manage case when web cache binary file are locked when the game is active.

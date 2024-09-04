@@ -402,7 +402,10 @@ The `starrail` package supports the following simple commands to access Honkai: 
 To start Honkai: Star Rail's Official Home Page, run:
 ```shell
 > starrail homepage
+OR
+> starrail homepage -cn # CN Homepage
 ```
+
 
 <br/>
 
@@ -418,6 +421,14 @@ To start Honkai: Star Rail's Official HoyoLab Page, run:
 To start Honkai: Star Rail's Official Youtube Page, run:
 ```shell
 > starrail youtube
+```
+
+<br/>
+
+### ☆ Offical BiliBili Page (CN)
+To start Honkai: Star Rail's Official BiliBili Page, run:
+```shell
+> starrail bilibili
 ```
 
 <br/>
