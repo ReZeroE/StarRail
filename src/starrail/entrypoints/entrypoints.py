@@ -153,6 +153,7 @@ def start_starrail():
     url_group = parser.add_group('Official Pages', "Access official Honkai: Star Rail's web pages from the CLI")
     
     homepage_parser = subparsers.add_parser('homepage', help='Open the official home page of Honkai: Star Rail', description='Open the official home page of Honkai: Star Rail')
+    homepage_parser.add_argument('-cn', action='store_true', default=False, help='Open CN version of the home page.')
     homepage_parser.set_defaults(func=entrypoint_handler.homepage)
     parser.add_parser_to_group(url_group, homepage_parser)
     
@@ -163,6 +164,10 @@ def start_starrail():
     youtube_parser = subparsers.add_parser('youtube', help='Open the official Youtube page of Honkai: Star Rail', description='Open the official Youtube page of Honkai: Star Rail')
     youtube_parser.set_defaults(func=entrypoint_handler.youtube)
     parser.add_parser_to_group(url_group, youtube_parser)
+    
+    bilibili_parser = subparsers.add_parser('bilibili', help='Open the official BiliBili page of Honkai: Star Rail', description='Open the official BiliBili page of Honkai: Star Rail')
+    bilibili_parser.set_defaults(func=entrypoint_handler.bilibili)
+    parser.add_parser_to_group(url_group, bilibili_parser)
     
     
     # =================================================

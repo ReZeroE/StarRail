@@ -207,7 +207,7 @@ class StarRailEntryPointHandler:
     # =================================================
     
     def homepage(self, args):
-        self.web_controller.homepage()
+        self.web_controller.homepage(args.cn)
         
     def hoyolab(self, args):
         self.web_controller.hoyolab()
@@ -215,6 +215,8 @@ class StarRailEntryPointHandler:
     def youtube(self, args):
         self.web_controller.youtube()
         
+    def bilibili(self, args):
+        self.web_controller.bilibili()
         
     # ===================================================
     # ===============| UTILITY FUNCTIONS | ==============

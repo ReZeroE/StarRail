@@ -47,9 +47,11 @@ AUTHOR_DETAIL       = f"{AUTHOR} - kevinliu@vt.edu - Github: ReZeroE"
 REPOSITORY          = "https://github.com/ReZeroE/StarRail"
 ISSUES              = f"{REPOSITORY}/issues"
 
-HOMEPAGE_URL        = "https://hsr.hoyoverse.com/en-us/"
+HOMEPAGE_URL        = "https://hsr.hoyoverse.com/en-us/home"
+HOMEPAGE_URL_CN     = "https://sr.mihoyo.com/"
 HOYOLAB_URL         = "https://www.hoyolab.com/home"
 YOUTUBE_URL         = "https://www.youtube.com/channel/UC2PeMPA8PAOp-bynLoCeMLA"
+BILIBILI_URL        = "https://space.bilibili.com/1340190821"
 
 
 # ==================================

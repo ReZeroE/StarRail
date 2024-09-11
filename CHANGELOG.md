@@ -1,6 +1,12 @@
 # Change Log
 
-### Version 1.0.3 - [8/29/2024]
+### Version 1.0.4 - [9/4/2024]
+- Added the following quick-links to the web controller
+    - BiliBili (CN) `> starrail bilibili`
+    - Homepage (CN) `> starrail homepage -cn`
+- Various minor bug fixes and code optimizations. 
+
+### Version 1.0.3, 1.0.4 - [8/29/2024]
 - Fixed more compatibility issues with the updated game directory structure.
 - Improved error messaging for the `starrail` scheduler and automation handler.
 - Introduced a handler to manage case when web cache binary file are locked when the game is active.
@@ -26,7 +32,7 @@
         - Author
         - Repository
 
-    - [CLI Launcher & Scheduler](https://github.com/ReZeroE/StarRail/wiki/4.-CLI-Launcher-&-Scheduler)
+    - [CLI Launcher & Scheduler](https://github.com/ReZeroE/StarRail/wiki/4.-Start-Stop-&-Schedule-Game)
         - Start Game
         - Stop Game
         - Schedule Start/Stop
