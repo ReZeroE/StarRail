@@ -503,7 +503,14 @@ To access the game's log files, run:
 > starrail game-logs
 ```
 
+<br/>
 
+
+### ☆ Session runtime
+To get the runtime of the current Honkai: Star Rail session (how long the game has been running since it started), run:
+```shell
+> starrail runtime
+```
 
 <br/>
 
