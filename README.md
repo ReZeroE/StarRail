@@ -153,7 +153,7 @@ Below is a brief overview of all the features supported by the `starrail` packag
    - Author
    - Repository
 
-- [CLI Launcher & Scheduler](https://github.com/ReZeroE/StarRail/wiki/4.-CLI-Launcher-&-Scheduler)
+- [CLI Launcher & Scheduler](https://github.com/ReZeroE/StarRail/wiki/4.-Start-Stop-&-Schedule-Game)
    - Start Game
    - Stop Game
    - Schedule Start/Stop
