@@ -9,6 +9,7 @@ import subprocess
 import configparser
 from pathlib import Path
 
+from starrail.constants import CURSOR_UP_ANSI
 from starrail.utils.utils import *
 from starrail.utils.process_handler import ProcessHandler
 from starrail.config.config_handler import StarRailConfig
@@ -22,7 +23,7 @@ class HonkaiStarRail:
         self.config = StarRailConfig()
         self.module_configured = self.config.full_configured()
         
-        self.webcache_controller = StarRailWebCacheController(self.config)
+        self.webcache_controller         = StarRailWebCacheController(self.config)
         self.streaming_assets_controller = StarRailStreamingAssetsController(self.config)
     
     
@@ -50,7 +51,7 @@ class HonkaiStarRail:
         aprint(f"Honkai: Star Rail failed to start due to an unknown reason.")
         return False
 
-    def terminate(self):
+    def terminate(self) -> bool:
         aprint("Terminating Honkai: Star Rail...", end="\r")
         
         # If the cached proc PID is working
@@ -76,7 +77,7 @@ class HonkaiStarRail:
         return False
 
     def schedule(self):
-        # Scheduler implement seperately in starrail/bin as of version 1.0.0.
+        # Scheduler implemented seperately in starrail/bin as of version 1.0.0
         ...
 
 
@@ -85,37 +86,54 @@ class HonkaiStarRail:
     # ===========| UTILITY FUNCTIONS | ============
     # =============================================
 
-    def show_status(self):
+    def show_status(self, live=False):
         aprint("Loading status for the Honkai: Star Rail process...")
         
-        starrail_proc = self.get_starrail_process()
-        headers = [Printer.to_lightblue(title) for title in ["Title", "HSR Real-time Status"]]
+        def print_status():
+            starrail_proc = self.get_starrail_process()
+            headers = [Printer.to_lightblue(title) for title in ["Title", "HSR Real-time Status"]]
+            
+            data_dict = {
+                "Status"            : "N/A",
+                "Process ID"        : "N/A",
+                "Started On"        : "N/A",
+                "CPU Percent"       : "N/A",
+                "CPU Affinity"      : "N/A",
+                "IO Operations"     : "N/A",
+                "RAM Usage"         : "N/A"
+            }
+            
+            if starrail_proc != None: # Is running
+                data_dict["Status"]          = bool_to_str(starrail_proc.is_running())
+                data_dict["Process ID"]      = starrail_proc.pid
+                data_dict["Started On"]      = DatetimeHandler.epoch_to_time_str(starrail_proc.create_time())
+                data_dict["CPU Percent"]     = f"{starrail_proc.cpu_percent(1)}%"
+                data_dict["CPU Affinity"]    = ",".join([str(e) for e in starrail_proc.cpu_affinity()])
+                data_dict["IO Operations"]   = f"Writes: {starrail_proc.io_counters().write_count}, Reads: {starrail_proc.io_counters().read_count}"
+                data_dict["RAM Usage"]       = f"{round(psutil.virtual_memory()[3]/1000000000, 4)} GB"
+                
+            else:
+                data_dict["Status"] = bool_to_str(False)
+                # All other options remain as N/A
+            
+            data_list = [[Printer.to_lightpurple(k), v] for k, v in data_dict.items()]
+            table = tabulate.tabulate(data_list, headers=headers)
+            print("\n" + table + "\n")
+            
+            if live:
+                print(CURSOR_UP_ANSI * (len(data_list)+5))
         
-        if starrail_proc != None: # Is running
-            data = [
-                ["Status",          bool_to_str(starrail_proc.is_running())],
-                ["Process ID",      starrail_proc.pid],
-                ["Started On",      DatetimeHandler.epoch_to_time_str(starrail_proc.create_time())],
-                ["CPU Percent",     f"{starrail_proc.cpu_percent(1)}%"],
-                ["CPU Affinity",    ",".join([str(e) for e in starrail_proc.cpu_affinity()])],
-                ["IO Operations",   f"Writes: {starrail_proc.io_counters().write_count}, Reads: {starrail_proc.io_counters().read_count}"],
-                ["RAM Usage",       f"{round(psutil.virtual_memory()[3]/1000000000, 2)} GB"]
-            ]
-        else:
-            data = [
-                ["Status",          bool_to_str(False)],
-                ["Process ID",      "None"],
-                ["Started On",      "None"],
-                ["CPU Percent",     "None"],
-                ["CPU Affinity",    "None"],
-                ["IO Operations",   "None"]
-            ]
-            
-        for row in data:
-            row[0] = Printer.to_lightpurple(row[0])
-            
-        table = tabulate.tabulate(data, headers=headers)
-        print("\n" + table + "\n")
+        try:
+            if live:
+                # TODO: Force CLI mode before allowing live status
+                while True:
+                    print_status()
+            else:
+                print_status()
+        except KeyboardInterrupt:
+            aprint("Status reading stopped.")
+            raise SRExit()
+    
             
     def show_config(self):
         # print(Printer.to_lightpurple("\n - Game Configuration Table -"))

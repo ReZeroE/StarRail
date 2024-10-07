@@ -69,7 +69,7 @@ class StarRailEntryPointHandler:
     # =================================================
     
     def show_status(self, args):
-        self.star_rail.show_status()
+        self.star_rail.show_status(args.live)
     
     def show_config(self, args):
         self.star_rail.show_config()

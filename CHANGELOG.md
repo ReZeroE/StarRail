@@ -1,5 +1,8 @@
 # Change Log
 
+### Version 1.0.5 - [9/25/2024]
+- Various minor bug fixes and code optimizations. 
+   
 ### Version 1.0.4 - [9/4/2024]
 - Added the following quick-links to the web controller
     - BiliBili (CN) `> starrail bilibili`
