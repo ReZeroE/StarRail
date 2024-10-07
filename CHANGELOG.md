@@ -1,6 +1,7 @@
 # Change Log
 
 ### Version 1.0.5 - [9/25/2024]
+- Added feature to show live game status (`starrail status --live`).
 - Various minor bug fixes and code optimizations. 
    
 ### Version 1.0.4 - [9/4/2024]
