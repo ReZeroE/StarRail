@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="starrail",
-    version="1.0.4",
+    version="1.0.5",
     author="Kevin L.",
     author_email="kevinliu@vt.edu",
     description="Honkai: Star Rail Command Line Tool (CLI)",

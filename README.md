@@ -72,7 +72,7 @@ Please review the CHANGELOG for the latest project updates and the [developer's 
 
 **STEP 1 - To Install** the `starrail` package, run with **admin permissions**:
 ```shell
-> pip install starrail==1.0.4
+> pip install starrail==1.0.5
 
 OR
 
@@ -281,6 +281,10 @@ Started On     2024-0x-xx 15:11:04
 CPU Percent    1.3%
 CPU Affinity   0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 IO Operations  Writes: 247728, Reads: 580093
+```
+To show live game status non-stop, run with argument `-l` or `--live`:
+```shell
+> starrail status [-l|--live]
 ```
 
 <br/>

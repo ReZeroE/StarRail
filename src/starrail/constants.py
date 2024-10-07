@@ -23,14 +23,14 @@
 
 import os
 
-# ==================================
-# ==========| CONSTANTS | ==========
-# ==================================
+# ==============================================
+# ==========| MODULE/GAME CONSTANTS | ==========
+# ==============================================
 
 BASENAME            = "StarRail CLI"
 SHORTNAME           = "StarRail"
 COMMAND             = "starrail"
-VERSION             = "1.0.4"
+VERSION             = "1.0.5"
 VERSION_DESC        = "Beta"
 DEVELOPMENT         = VERSION_DESC.lower() != "stable"
 
@@ -54,9 +54,19 @@ YOUTUBE_URL         = "https://www.youtube.com/channel/UC2PeMPA8PAOp-bynLoCeMLA"
 BILIBILI_URL        = "https://space.bilibili.com/1340190821"
 
 
-# ==================================
-# ============| PATHS | ============
-# ==================================
+# ==============================================
+# =============| OTHER CONSTANTS | =============
+# ==============================================
+
+CURSOR_UP_ANSI  = "\033[A"
+
+# See utils/game_detector for details on "Weak Match"
+MIN_WEAK_MATCH_EXE_SIZE = 0.5 # megabytes
+
+
+# ==============================================
+# ==================| PATHS | ==================
+# ==============================================
 
 HOME_DIRECTORY      = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
@@ -70,38 +80,36 @@ else:
     STARRAIL_DIRECTORY   = os.path.join(HOME_DIRECTORY, "src", "starrail")
 
 
-# ==================================
-# ===========| GLOBALS | ===========
-# ==================================
+# ==============================================
+# =================| GLOBALS | =================
+# ==============================================
 
 # Global variables to identify whether the program is in CLI mode
 # MUST BE USED AS constants.CLI_MODE (only this accesses the re-bind value)
 CLI_MODE        = False
 
-CURSOR_UP_ANSI  = "\033[A"
 
-MIN_WEAK_MATCH_EXE_SIZE = 0.5 # megabytes
+# ==============================================
+# ================| RECORDER | =================
+# ==============================================
 
-
-# ==================================
-# ==========| RECORDER | ===========
-# ==================================
-
+# Recording window size preset:
 RECORDER_WINDOW_INFO = {
     "width": 600,
     "height": 100,
     "border-radius": 10
 }
 
+# Recording window preset size calibrated using:
 CALIBRATION_MONITOR_INFO = {
     "width": 3840,
     "height": 2160
 }
 
 
-# ==================================
-# ============| OTHER | ============
-# ==================================
+# ==============================================
+# ==================| OTHER | ==================
+# ==============================================
 
 WEBCACHE_IGNORE_FILETYPES = [
     ".js",

@@ -73,7 +73,7 @@ def start_starrail():
     repo_parser.add_argument('--open', '-o', action='store_true', default=False, help='Open repository in web.')
     repo_parser.set_defaults(func=entrypoint_handler.repo)
     parser.add_parser_to_group(about_group, repo_parser)
-                 
+    
     author_parser = subparsers.add_parser('author', help='Verbose module author', description='Verbose module author')
     author_parser.set_defaults(func=entrypoint_handler.author)
     parser.add_parser_to_group(about_group, author_parser)
@@ -86,6 +86,7 @@ def start_starrail():
     game_info_group = parser.add_group('Game Info', 'Get static and realtime information about the local installation of Honkai: Star Rail.')
     
     show_status = subparsers.add_parser('status', help='Show real-time game status (game process)', description='Show real-time game status (game process)')
+    show_status.add_argument('--live', '-l', action='store_true', default=False, help='Show live game status (non-stop).')
     show_status.set_defaults(func=entrypoint_handler.show_status)
     parser.add_parser_to_group(game_info_group, show_status)
     
